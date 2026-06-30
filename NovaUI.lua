@@ -1,59 +1,3 @@
---[[
-
-
-
-
-
-
-
-
-
-
-
-                               /$$ /$$   /$$ /$$$$$$$                       /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$ 
-                              /$$/| $$  | $$| $$__  $$                     /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$
-      /$$$$$$   /$$$$$$      /$$/ | $$  | $$| $$  \ $$ /$$    /$$ /$$$$$$ | $$  \__/| $$  \__/| $$  \ $$| $$  \ $$| $$  \ $$|__/  \ $$
-     /$$__  $$ /$$__  $$    /$$/  | $$  | $$| $$  | $$|  $$  /$$//$$__  $$| $$      | $$      |  $$$$$$$| $$$$$$$$| $$$$$$$$  /$$$$$$/
-    | $$  \ $$| $$  \ $$   /$$/   | $$  | $$| $$  | $$ \  $$/$$/| $$  \__/| $$      | $$       \____  $$| $$__  $$| $$__  $$ /$$____/ 
-    | $$  | $$| $$  | $$  /$$/    | $$  | $$| $$  | $$  \  $$$/ | $$      | $$    $$| $$    $$ /$$  \ $$| $$  | $$| $$  | $$| $$      
- /$$|  $$$$$$$|  $$$$$$$ /$$/     |  $$$$$$/| $$$$$$$/   \  $/  | $$      |  $$$$$$/|  $$$$$$/|  $$$$$$/| $$  | $$| $$  | $$| $$$$$$$$
-|__/ \____  $$ \____  $$|__/       \______/ |_______/     \_/   |__/       \______/  \______/  \______/ |__/  |__/|__/  |__/|________/
-     /$$  \ $$ /$$  \ $$                                                                                                              
-    |  $$$$$$/|  $$$$$$/                                                                                                              
-     \______/  \______/                                                                                                               
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                      
-                                                                                                                                   
-
- /$$   /$$                                /$$$$$$                                /$$    /$$                                /$$$$$$ 
-| $$$ | $$                               /$$__  $$                              | $$   | $$                               /$$__  $$
-| $$$$| $$                              | $$  \ $$                              | $$   | $$                              | $$  \ $$
-| $$ $$ $$                              | $$  | $$                              |  $$ / $$/                              | $$$$$$$$
-| $$  $$$$                              | $$  | $$                               \  $$ $$/                               | $$__  $$
-| $$\  $$$                              | $$  | $$                                \  $$$/                                | $$  | $$
-| $$ \  $$                              |  $$$$$$/                                 \  $/                                 | $$  | $$
-|__/  \__/                               \______/                                   \_/                                  |__/  |__/
-
-]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 local Release = "Prerelease Beta 6.1"
@@ -61,22 +5,22 @@ local Release = "Prerelease Beta 6.1"
 local Nova = { 
 	Folder = "Nova", 
 	Options = {}, 
-	ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(79, 140, 255)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(45, 212, 191)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(236, 72, 153))} 
+	ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(128, 128, 128)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))} 
 }
 
 local UITheme = {
-	Background = Color3.fromRGB(9, 11, 16),
-	Panel = Color3.fromRGB(14, 17, 24),
-	Surface = Color3.fromRGB(20, 24, 33),
-	SurfaceAlt = Color3.fromRGB(25, 30, 41),
-	Stroke = Color3.fromRGB(49, 58, 75),
-	StrokeHover = Color3.fromRGB(78, 91, 115),
-	StrokeActive = Color3.fromRGB(119, 142, 178),
-	Text = Color3.fromRGB(246, 248, 252),
-	TextMuted = Color3.fromRGB(178, 187, 202),
-	TextSubtle = Color3.fromRGB(139, 149, 166),
-	Error = Color3.fromRGB(112, 22, 32),
-	ToggleOff = Color3.fromRGB(91, 99, 112),
+	Background = Color3.fromRGB(0, 0, 0),
+	Panel = Color3.fromRGB(12, 12, 12),
+	Surface = Color3.fromRGB(20, 20, 20),
+	SurfaceAlt = Color3.fromRGB(34, 34, 34),
+	Stroke = Color3.fromRGB(255, 255, 255),
+	StrokeHover = Color3.fromRGB(200, 200, 200),
+	StrokeActive = Color3.fromRGB(160, 160, 160),
+	Text = Color3.fromRGB(255, 255, 255),
+	TextMuted = Color3.fromRGB(180, 180, 180),
+	TextSubtle = Color3.fromRGB(140, 140, 140),
+	Error = Color3.fromRGB(255, 255, 255),
+	ToggleOff = Color3.fromRGB(90, 90, 90),
 }
 
 local UserInputService = game:GetService("UserInputService")
@@ -1590,16 +1534,11 @@ local IconModule = {
 local request = (syn and syn.request) or (http and http.request) or http_request or nil
 local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 local PresetGradients = {
-	["Nightlight (Classic)"] = {Color3.fromRGB(147, 255, 239), Color3.fromRGB(201,211,233), Color3.fromRGB(255, 167, 227)},
-	["Nightlight (Neo)"] = {Color3.fromRGB(117, 164, 206), Color3.fromRGB(123, 201, 201), Color3.fromRGB(224, 138, 175)},
-	Starlight = {Color3.fromRGB(147, 255, 239), Color3.fromRGB(181, 206, 241), Color3.fromRGB(214, 158, 243)},
-	Solar = {Color3.fromRGB(242, 157, 76), Color3.fromRGB(240, 179, 81), Color3.fromRGB(238, 201, 86)},
-	Sparkle = {Color3.fromRGB(199, 130, 242), Color3.fromRGB(221, 130, 238), Color3.fromRGB(243, 129, 233)},
-	Lime = {Color3.fromRGB(170, 255, 127), Color3.fromRGB(163, 220, 138), Color3.fromRGB(155, 185, 149)},
-	Vine = {Color3.fromRGB(0, 191, 143), Color3.fromRGB(0, 126, 94), Color3.fromRGB(0, 61, 46)},
-	Cherry = {Color3.fromRGB(148, 54, 54), Color3.fromRGB(168, 67, 70), Color3.fromRGB(188, 80, 86)},
-	Daylight = {Color3.fromRGB(51, 156, 255), Color3.fromRGB(89, 171, 237), Color3.fromRGB(127, 186, 218)},
-	Blossom = {Color3.fromRGB(255, 165, 243), Color3.fromRGB(213, 129, 231), Color3.fromRGB(170, 92, 218)},
+	["Mono Light"] = {Color3.fromRGB(255, 255, 255), Color3.fromRGB(200, 200, 200), Color3.fromRGB(100, 100, 100)},
+	["Mono Dark"] = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(70, 70, 70), Color3.fromRGB(150, 150, 150)},
+	["Midnight"] = {Color3.fromRGB(10, 10, 10), Color3.fromRGB(80, 80, 80), Color3.fromRGB(220, 220, 220)},
+	["High Contrast"] = {Color3.fromRGB(0, 0, 0), Color3.fromRGB(128, 128, 128), Color3.fromRGB(255, 255, 255)},
+	["Paper"] = {Color3.fromRGB(255, 255, 255), Color3.fromRGB(230, 230, 230), Color3.fromRGB(180, 180, 180)},
 }
 
 local function GetIcon(icon, source)
@@ -1915,11 +1854,13 @@ local function ApplyDarkRefresh(root)
 			end
 		elseif instance:IsA("GuiObject") then
 			local name = string.lower(instance.Name)
-			if nearColor(instance.BackgroundColor3, Color3.fromRGB(32, 30, 38), 35) then
+			if nearColor(instance.BackgroundColor3, Color3.fromRGB(10, 10, 10), 40) or nearColor(instance.BackgroundColor3, Color3.fromRGB(9, 11, 16), 40) then
+				instance.BackgroundColor3 = UITheme.Panel
+			elseif nearColor(instance.BackgroundColor3, Color3.fromRGB(20, 20, 25), 40) or nearColor(instance.BackgroundColor3, Color3.fromRGB(32, 30, 38), 40) then
 				instance.BackgroundColor3 = UITheme.Surface
-			elseif nearColor(instance.BackgroundColor3, Color3.fromRGB(30, 33, 40), 35) then
+			elseif nearColor(instance.BackgroundColor3, Color3.fromRGB(30, 33, 40), 40) or nearColor(instance.BackgroundColor3, Color3.fromRGB(25, 30, 41), 40) then
 				instance.BackgroundColor3 = UITheme.SurfaceAlt
-			elseif nearColor(instance.BackgroundColor3, Color3.fromRGB(20, 20, 25), 35) or name == "smartwindow" then
+			elseif nearColor(instance.BackgroundColor3, Color3.fromRGB(20, 20, 27), 40) or name == "smartwindow" then
 				instance.BackgroundColor3 = UITheme.Panel
 			elseif name == "elements" or name == "navigation" or name == "keysystem" or name == "loadingframe" then
 				instance.BackgroundColor3 = UITheme.Background
