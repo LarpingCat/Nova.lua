@@ -11,4 +11,4 @@
                                                                        
 ]]
 
-loadstring(game:HttpGet("https://api.getvortex.vip/api/t/3SFK7A/s/OGsniper"))()
+loadstring(game:HttpGet("https://api.getvortex.vip/api/t/3SFK7A/s/Nova"))()
