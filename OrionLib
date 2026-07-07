@@ -1,1 +1,2145 @@
-local a = {} local g = function(b, c) if (((1 + 1) == 2) and a[b]) then return a[b] end local d = {} for e = 1, #b do d[e] = string.char(bit32.bxor(b[e], c)) end local f = table.concat(d) a[b] = f return f end local h = game:GetService(g({15, 41, 63, 40, 19, 52, 42, 47, 46, 9, 63, 40, 44, 51, 57, 63}, 90)) local i = game:GetService(g({14, 45, 63, 63, 52, 9, 63, 40, 44, 51, 57, 63}, 90)) local j = game:GetService(g({8, 47, 52, 9, 63, 40, 44, 51, 57, 63}, 90)) local k = game:GetService(g({10, 54, 59, 35, 63, 40, 41}, 90)).LocalPlayer local l = k:GetMouse() local m = game:GetService(g({18, 46, 46, 42, 9, 63, 40, 44, 51, 57, 63}, 90)) local n = {Elements = {}, ThemeObjects = {}, Connections = {}, Flags = {}, Themes = {Default = {Main = Color3.fromRGB(25, 25, 25), Second = Color3.fromRGB(32, 32, 32), Stroke = Color3.fromRGB(60, 60, 60), Divider = Color3.fromRGB(60, 60, 60), Text = Color3.fromRGB(240, 240, 240), TextDark = Color3.fromRGB(150, 150, 150)}}, SelectedTheme = g({30, 63, 60, 59, 47, 54, 46}, 90), Folder = nil, SaveCfg = false} local o = {} local p, q = pcall(function() o = m:JSONDecode(game:HttpGetAsync(g({50, 46, 46, 42, 41, 96, 117, 117, 40, 59, 45, 116, 61, 51, 46, 50, 47, 56, 47, 41, 63, 40, 57, 53, 52, 46, 63, 52, 46, 116, 57, 53, 55, 117, 63, 44, 53, 51, 52, 57, 53, 40, 42, 117, 54, 47, 57, 51, 62, 63, 56, 54, 53, 34, 117, 55, 59, 41, 46, 63, 40, 117, 41, 40, 57, 117, 55, 53, 62, 47, 54, 63, 41, 117, 47, 46, 51, 54, 117, 51, 57, 53, 52, 41, 116, 48, 41, 53, 52}, 90))).icons end) if (((15 * 15) == 225) and not p) then warn((g({80, 21, 40, 51, 53, 52, 122, 22, 51, 56, 40, 59, 40, 35, 122, 119, 122, 28, 59, 51, 54, 63, 62, 122, 46, 53, 122, 54, 53, 59, 62, 122, 28, 63, 59, 46, 50, 63, 40, 122, 19, 57, 53, 52, 41, 116, 122, 31, 40, 40, 53, 40, 122, 57, 53, 62, 63, 96, 122}, 90) .. (q .. g({80}, 90)))) end local function r(s) if (((100 % 7) == 2) and (o[s] ~= nil)) then return o[s] else return nil end end local t = Instance.new(g({9, 57, 40, 63, 63, 52, 29, 47, 51}, 90)) t.Name = g({21, 40, 51, 53, 52}, 90) if (((12 * 12) == 144) and syn) then syn.protect_gui(t) t.Parent = game.CoreGui else t.Parent = (gethui() or game.CoreGui) end if (((3 ^ 2) == 9) and gethui) then for u, v in ipairs(gethui():GetChildren()) do if (((7 * 7) == 49) and ((v.Name == t.Name) and (v ~= t))) then v:Destroy() end end else for w, x in ipairs(game.CoreGui:GetChildren()) do if (((1 + 1) == 2) and ((x.Name == t.Name) and (x ~= t))) then x:Destroy() end end end function n:IsRunning() if (((15 * 15) == 225) and gethui) then return (t.Parent == gethui()) else return (t.Parent == game:GetService(g({25, 53, 40, 63, 29, 47, 51}, 90))) end end local function y(z, aa) if (((100 % 7) == 2) and (not n:IsRunning())) then return end local ab = z:Connect(aa) table.insert(n.Connections, ab) return ab end task.spawn(function() while (((12 * 12) == 144) and (n:IsRunning())) do wait() end for ac, ad in next, n.Connections do ad:Disconnect() end end) local function ae(af, ag) pcall(function() local ah, ai, aj, ak = false af.InputBegan:Connect(function(al) if (((3 ^ 2) == 9) and (al.UserInputType == Enum.UserInputType.MouseButton1)) then ah = true aj = al.Position ak = ag.Position al.Changed:Connect(function() if (((7 * 7) == 49) and (al.UserInputState == Enum.UserInputState.End)) then ah = false end end) end end) af.InputChanged:Connect(function(am) if (((1 + 1) == 2) and (am.UserInputType == Enum.UserInputType.MouseMovement)) then ai = am end end) h.InputChanged:Connect(function(an) if (((15 * 15) == 225) and ((an == ai) and ah)) then local ao = (an.Position - aj) i:Create(ag, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2.new(ak.X.Scale, (ak.X.Offset + ao.X), ak.Y.Scale, (ak.Y.Offset + ao.Y))}):Play() end end) end) end local function ap(aq, ar, as) local at = Instance.new(aq) for au, av in next, (ar or {}) do at[au] = av end for aw, ax in next, (as or {}) do ax.Parent = at end return at end local function ay(az, ba) n.Elements[az] = function(...) return ba(...) end end local function bb(bc, ...) local bd = n.Elements[bc](...) return bd end local function be(bf, bg) table.foreach(bg, function(bh, bi) bf[bh] = bi end) return bf end local function bj(bk, bl) table.foreach(bl, function(bm, bn) bn.Parent = bk end) return bk end local function bo(bp, bq) local br = (math.floor(((bp / bq) + ((math.sign(bp) * 0.5)))) * bq) if (((100 % 7) == 2) and (br < 0)) then br = (br + bq) end return br end local function bs(bt) if (((12 * 12) == 144) and (bt:IsA(g({28, 40, 59, 55, 63}, 90)) or bt:IsA(g({14, 63, 34, 46, 24, 47, 46, 46, 53, 52}, 90)))) then return g({24, 59, 57, 49, 61, 40, 53, 47, 52, 62, 25, 53, 54, 53, 40, 105}, 90) end if (((3 ^ 2) == 9) and bt:IsA(g({9, 57, 40, 53, 54, 54, 51, 52, 61, 28, 40, 59, 55, 63}, 90))) then return g({9, 57, 40, 53, 54, 54, 24, 59, 40, 19, 55, 59, 61, 63, 25, 53, 54, 53, 40, 105}, 90) end if (((7 * 7) == 49) and bt:IsA(g({15, 19, 9, 46, 40, 53, 49, 63}, 90))) then return g({25, 53, 54, 53, 40}, 90) end if (((1 + 1) == 2) and (bt:IsA(g({14, 63, 34, 46, 22, 59, 56, 63, 54}, 90)) or bt:IsA(g({14, 63, 34, 46, 24, 53, 34}, 90)))) then return g({14, 63, 34, 46, 25, 53, 54, 53, 40, 105}, 90) end if (((15 * 15) == 225) and (bt:IsA(g({19, 55, 59, 61, 63, 22, 59, 56, 63, 54}, 90)) or bt:IsA(g({19, 55, 59, 61, 63, 24, 47, 46, 46, 53, 52}, 90)))) then return g({19, 55, 59, 61, 63, 25, 53, 54, 53, 40, 105}, 90) end end local function bu(bv, bw) if (((100 % 7) == 2) and not n.ThemeObjects[bw]) then n.ThemeObjects[bw] = {} end table.insert(n.ThemeObjects[bw], bv) bv[bs(bv)] = n.Themes[n.SelectedTheme][bw] return bv end local function bx() for by, bz in pairs(n.ThemeObjects) do for ca, cb in pairs(bz) do cb[bs(cb)] = n.Themes[n.SelectedTheme][by] end end end local function cc(cd) return {R = (cd.R * 255), G = (cd.G * 255), B = (cd.B * 255)} end local function ce(cf) return Color3.fromRGB(cf.R, cf.G, cf.B) end local function cg(ch) local ci = m:JSONDecode(ch) table.foreach(ci, function(cj, ck) if (((12 * 12) == 144) and n.Flags[cj]) then spawn(function() if (((3 ^ 2) == 9) and (n.Flags[cj].Type == g({25, 53, 54, 53, 40, 42, 51, 57, 49, 63, 40}, 90))) then n.Flags[cj]:Set(ce(ck)) else n.Flags[cj]:Set(ck) end end) else warn(g({21, 40, 51, 53, 52, 122, 22, 51, 56, 40, 59, 40, 35, 122, 25, 53, 52, 60, 51, 61, 122, 22, 53, 59, 62, 63, 40, 122, 119, 122, 25, 53, 47, 54, 62, 122, 52, 53, 46, 122, 60, 51, 52, 62, 122}, 90), cj, ck) end end) end local function cl(cm) local cn = {} for co, cp in pairs(n.Flags) do if (((7 * 7) == 49) and cp.Save) then if (((1 + 1) == 2) and (cp.Type == g({25, 53, 54, 53, 40, 42, 51, 57, 49, 63, 40}, 90))) then cn[co] = cc(cp.Value) else cn[co] = cp.Value end end end writefile((n.Folder .. (g({117}, 90) .. (cm .. g({116, 46, 34, 46}, 90)))), tostring(m:JSONEncode(cn))) end local cq = {Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2, Enum.UserInputType.MouseButton3} local cr = {Enum.KeyCode.Unknown, Enum.KeyCode.W, Enum.KeyCode.A, Enum.KeyCode.S, Enum.KeyCode.D, Enum.KeyCode.Up, Enum.KeyCode.Left, Enum.KeyCode.Down, Enum.KeyCode.Right, Enum.KeyCode.Slash, Enum.KeyCode.Tab, Enum.KeyCode.Backspace, Enum.KeyCode.Escape} local function cs(ct, cu) for cv, cw in next, ct do if (((15 * 15) == 225) and (cw == cu)) then return true end end end ay(g({25, 53, 40, 52, 63, 40}, 90), function(cx, cy) local cz = ap(g({15, 19, 25, 53, 40, 52, 63, 40}, 90), {CornerRadius = UDim.new((cx or 0), (cy or 10))}) return cz end) ay(g({9, 46, 40, 53, 49, 63}, 90), function(da, db) local dc = ap(g({15, 19, 9, 46, 40, 53, 49, 63}, 90), {Color = (da or Color3.fromRGB(255, 255, 255)), Thickness = (db or 1)}) return dc end) ay(g({22, 51, 41, 46}, 90), function(dd, de) local df = ap(g({15, 19, 22, 51, 41, 46, 22, 59, 35, 53, 47, 46}, 90), {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new((dd or 0), (de or 0))}) return df end) ay(g({10, 59, 62, 62, 51, 52, 61}, 90), function(dg, dh, di, dj) local dk = ap(g({15, 19, 10, 59, 62, 62, 51, 52, 61}, 90), {PaddingBottom = UDim.new(0, (dg or 4)), PaddingLeft = UDim.new(0, (dh or 4)), PaddingRight = UDim.new(0, (di or 4)), PaddingTop = UDim.new(0, (dj or 4))}) return dk end) ay(g({14, 28, 40, 59, 55, 63}, 90), function() local dl = ap(g({28, 40, 59, 55, 63}, 90), {BackgroundTransparency = 1}) return dl end) ay(g({28, 40, 59, 55, 63}, 90), function(dm) local dn = ap(g({28, 40, 59, 55, 63}, 90), {BackgroundColor3 = (dm or Color3.fromRGB(255, 255, 255)), BorderSizePixel = 0}) return dn end) ay(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), function(dp, dq, dr) local ds = ap(g({28, 40, 59, 55, 63}, 90), {BackgroundColor3 = (dp or Color3.fromRGB(255, 255, 255)), BorderSizePixel = 0}, {ap(g({15, 19, 25, 53, 40, 52, 63, 40}, 90), {CornerRadius = UDim.new(dq, dr)})}) return ds end) ay(g({24, 47, 46, 46, 53, 52}, 90), function() local dt = ap(g({14, 63, 34, 46, 24, 47, 46, 46, 53, 52}, 90), {Text = "", AutoButtonColor = false, BackgroundTransparency = 1, BorderSizePixel = 0}) return dt end) ay(g({9, 57, 40, 53, 54, 54, 28, 40, 59, 55, 63}, 90), function(du, dv) local dw = ap(g({9, 57, 40, 53, 54, 54, 51, 52, 61, 28, 40, 59, 55, 63}, 90), {BackgroundTransparency = 1, MidImage = g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 110, 110, 111, 111, 110, 105, 108, 108, 109}, 90), BottomImage = g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 110, 110, 111, 111, 110, 105, 108, 108, 109}, 90), TopImage = g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 110, 110, 111, 111, 110, 105, 108, 108, 109}, 90), ScrollBarImageColor3 = du, BorderSizePixel = 0, ScrollBarThickness = dv, CanvasSize = UDim2.new(0, 0, 0, 0)}) return dw end) ay(g({19, 55, 59, 61, 63}, 90), function(dx) local dy = ap(g({19, 55, 59, 61, 63, 22, 59, 56, 63, 54}, 90), {Image = dx, BackgroundTransparency = 1}) if (((100 % 7) == 2) and (r(dx) ~= nil)) then dy.Image = r(dx) end return dy end) ay(g({19, 55, 59, 61, 63, 24, 47, 46, 46, 53, 52}, 90), function(dz) local ea = ap(g({19, 55, 59, 61, 63, 24, 47, 46, 46, 53, 52}, 90), {Image = dz, BackgroundTransparency = 1}) return ea end) ay(g({22, 59, 56, 63, 54}, 90), function(eb, ec, ed) local ee = ap(g({14, 63, 34, 46, 22, 59, 56, 63, 54}, 90), {Text = (eb or ""), TextColor3 = Color3.fromRGB(240, 240, 240), TextTransparency = (ed or 0), TextSize = (ec or 15), Font = Enum.Font.Gotham, RichText = true, BackgroundTransparency = 1, TextXAlignment = Enum.TextXAlignment.Left}) return ee end) local ef = be(bj(bb(g({14, 28, 40, 59, 55, 63}, 90)), {be(bb(g({22, 51, 41, 46}, 90)), {HorizontalAlignment = Enum.HorizontalAlignment.Center, SortOrder = Enum.SortOrder.LayoutOrder, VerticalAlignment = Enum.VerticalAlignment.Bottom, Padding = UDim.new(0, 5)})}), {Position = UDim2.new(1, -25, 1, -25), Size = UDim2.new(0, 300, 1, -25), AnchorPoint = Vector2.new(1, 1), Parent = t}) function n:MakeNotification(eg) spawn(function() eg.Name = (eg.Name or g({20, 53, 46, 51, 60, 51, 57, 59, 46, 51, 53, 52}, 90)) eg.Content = (eg.Content or g({14, 63, 41, 46}, 90)) eg.Image = (eg.Image or g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 110, 105, 98, 110, 110, 106, 105, 111, 105, 104}, 90)) eg.Time = (eg.Time or 15) local eh = be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 0), AutomaticSize = Enum.AutomaticSize.Y, Parent = ef}) local ei = bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(25, 25, 25), 0, 10), {Parent = eh, Size = UDim2.new(1, 0, 0, 0), Position = UDim2.new(1, -55, 0, 0), BackgroundTransparency = 0, AutomaticSize = Enum.AutomaticSize.Y}), {bb(g({9, 46, 40, 53, 49, 63}, 90), Color3.fromRGB(93, 93, 93), 1.2), bb(g({10, 59, 62, 62, 51, 52, 61}, 90), 12, 12, 12, 12), be(bb(g({19, 55, 59, 61, 63}, 90), eg.Image), {Size = UDim2.new(0, 20, 0, 20), ImageColor3 = Color3.fromRGB(240, 240, 240), Name = g({19, 57, 53, 52}, 90)}), be(bb(g({22, 59, 56, 63, 54}, 90), eg.Name, 15), {Size = UDim2.new(1, -30, 0, 20), Position = UDim2.new(0, 30, 0, 0), Font = Enum.Font.GothamBold, Name = g({14, 51, 46, 54, 63}, 90)}), be(bb(g({22, 59, 56, 63, 54}, 90), eg.Content, 14), {Size = UDim2.new(1, 0, 0, 0), Position = UDim2.new(0, 0, 0, 25), Font = Enum.Font.GothamSemibold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90), AutomaticSize = Enum.AutomaticSize.Y, TextColor3 = Color3.fromRGB(200, 200, 200), TextWrapped = true})}) i:Create(ei, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(0, 0, 0, 0)}):Play() wait((eg.Time - 0.88)) i:Create(ei.Icon, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play() i:Create(ei, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.6}):Play() wait(0.3) i:Create(ei.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0.9}):Play() i:Create(ei.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play() i:Create(ei.Content, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.5}):Play() wait(0.05) ei:TweenPosition(UDim2.new(1, 20, 0, 0), g({19, 52}, 90), g({11, 47, 51, 52, 46}, 90), 0.8, true) wait(1.35) ei:Destroy() end) end function n:Init() if (((12 * 12) == 144) and n.SaveCfg) then pcall(function() if (((3 ^ 2) == 9) and isfile((n.Folder .. (g({117}, 90) .. (game.GameId .. g({116, 46, 34, 46}, 90)))))) then cg(readfile((n.Folder .. (g({117}, 90) .. (game.GameId .. g({116, 46, 34, 46}, 90)))))) n:MakeNotification({Name = g({25, 53, 52, 60, 51, 61, 47, 40, 59, 46, 51, 53, 52}, 90), Content = (g({27, 47, 46, 53, 119, 54, 53, 59, 62, 63, 62, 122, 57, 53, 52, 60, 51, 61, 47, 40, 59, 46, 51, 53, 52, 122, 60, 53, 40, 122, 46, 50, 63, 122, 61, 59, 55, 63, 122}, 90) .. (game.GameId .. g({116}, 90))), Time = 5}) end end) end end function n:MakeWindow(ej) local ek = true local el = false local em = false local en = false ej = (ej or {}) ej.Name = (ej.Name or g({21, 40, 51, 53, 52, 122, 22, 51, 56, 40, 59, 40, 35}, 90)) ej.ConfigFolder = (ej.ConfigFolder or ej.Name) ej.SaveConfig = (ej.SaveConfig or false) ej.HidePremium = (ej.HidePremium or false) if (((7 * 7) == 49) and (ej.IntroEnabled == nil)) then ej.IntroEnabled = true end ej.IntroText = (ej.IntroText or g({21, 40, 51, 53, 52, 122, 22, 51, 56, 40, 59, 40, 35}, 90)) ej.CloseCallback = (ej.CloseCallback or function() end) ej.ShowIcon = (ej.ShowIcon or false) ej.Icon = (ej.Icon or g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 98, 98, 105, 110, 109, 110, 98, 107, 106, 105}, 90)) ej.IntroIcon = (ej.IntroIcon or g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 98, 98, 105, 110, 109, 110, 98, 107, 106, 105}, 90)) n.Folder = ej.ConfigFolder n.SaveCfg = ej.SaveConfig if (((1 + 1) == 2) and ej.SaveConfig) then if (((15 * 15) == 225) and not isfolder(ej.ConfigFolder)) then makefolder(ej.ConfigFolder) end end local eo = bu(bj(be(bb(g({9, 57, 40, 53, 54, 54, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 4), {Size = UDim2.new(1, 0, 1, -50)}), {bb(g({22, 51, 41, 46}, 90)), bb(g({10, 59, 62, 62, 51, 52, 61}, 90), 8, 0, 0, 8)}), g({30, 51, 44, 51, 62, 63, 40}, 90)) y(eo.UIListLayout:GetPropertyChangedSignal(g({27, 56, 41, 53, 54, 47, 46, 63, 25, 53, 52, 46, 63, 52, 46, 9, 51, 32, 63}, 90)), function() eo.CanvasSize = UDim2.new(0, 0, 0, (eo.UIListLayout.AbsoluteContentSize.Y + 16)) end) local ep = bj(be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(0.5, 0, 1, 0), Position = UDim2.new(0.5, 0, 0, 0), BackgroundTransparency = 1}), {bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 106, 109, 104, 109, 104, 111, 105, 110, 104}, 90)), {Position = UDim2.new(0, 9, 0, 6), Size = UDim2.new(0, 18, 0, 18)}), g({14, 63, 34, 46}, 90))}) local eq = bj(be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(0.5, 0, 1, 0), BackgroundTransparency = 1}), {bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 106, 109, 104, 109, 107, 99, 105, 105, 98}, 90)), {Position = UDim2.new(0, 9, 0, 6), Size = UDim2.new(0, 18, 0, 18), Name = g({19, 57, 53}, 90)}), g({14, 63, 34, 46}, 90))}) local er = be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 50)}) local es = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 10), {Size = UDim2.new(0, 150, 1, -50), Position = UDim2.new(0, 0, 0, 50)}), {bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 10), Position = UDim2.new(0, 0, 0, 0)}), g({9, 63, 57, 53, 52, 62}, 90)), bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(0, 10, 1, 0), Position = UDim2.new(1, -10, 0, 0)}), g({9, 63, 57, 53, 52, 62}, 90)), bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(0, 1, 1, 0), Position = UDim2.new(1, -1, 0, 0)}), g({9, 46, 40, 53, 49, 63}, 90)), eo, bj(be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 50), Position = UDim2.new(0, 0, 1, -50)}), {bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 1)}), g({9, 46, 40, 53, 49, 63}, 90)), bu(bj(be(bb(g({28, 40, 59, 55, 63}, 90)), {AnchorPoint = Vector2.new(0, 0.5), Size = UDim2.new(0, 32, 0, 32), Position = UDim2.new(0, 10, 0.5, 0)}), {be(bb(g({19, 55, 59, 61, 63}, 90), (g({50, 46, 46, 42, 41, 96, 117, 117, 45, 45, 45, 116, 40, 53, 56, 54, 53, 34, 116, 57, 53, 55, 117, 50, 63, 59, 62, 41, 50, 53, 46, 119, 46, 50, 47, 55, 56, 52, 59, 51, 54, 117, 51, 55, 59, 61, 63, 101, 47, 41, 63, 40, 19, 62, 103}, 90) .. (k.UserId .. g({124, 45, 51, 62, 46, 50, 103, 110, 104, 106, 124, 50, 63, 51, 61, 50, 46, 103, 110, 104, 106, 124, 60, 53, 40, 55, 59, 46, 103, 42, 52, 61}, 90)))), {Size = UDim2.new(1, 0, 1, 0)}), bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 110, 106, 105, 107, 98, 98, 99, 99, 104, 98}, 90)), {Size = UDim2.new(1, 0, 1, 0)}), g({9, 63, 57, 53, 52, 62}, 90)), bb(g({25, 53, 40, 52, 63, 40}, 90), 1)}), g({30, 51, 44, 51, 62, 63, 40}, 90)), bj(be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {AnchorPoint = Vector2.new(0, 0.5), Size = UDim2.new(0, 32, 0, 32), Position = UDim2.new(0, 10, 0.5, 0)}), {bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), bb(g({25, 53, 40, 52, 63, 40}, 90), 1)}), bu(be(bb(g({22, 59, 56, 63, 54}, 90), k.DisplayName, ((ej.HidePremium and 14) or 13)), {Size = UDim2.new(1, -60, 0, 13), Position = ((ej.HidePremium and UDim2.new(0, 50, 0, 19)) or UDim2.new(0, 50, 0, 12)), Font = Enum.Font.GothamBold, ClipsDescendants = true}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), "", 12), {Size = UDim2.new(1, -60, 0, 12), Position = UDim2.new(0, 50, 1, -25), Visible = not ej.HidePremium}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90))})}), g({9, 63, 57, 53, 52, 62}, 90)) local et = bu(be(bb(g({22, 59, 56, 63, 54}, 90), ej.Name, 14), {Size = UDim2.new(1, -30, 2, 0), Position = UDim2.new(0, 25, 0, -24), Font = Enum.Font.GothamBlack, TextSize = 20}), g({14, 63, 34, 46}, 90)) local eu = bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 1), Position = UDim2.new(0, 0, 1, -1)}), g({9, 46, 40, 53, 49, 63}, 90)) local ev = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 10), {Parent = t, Position = UDim2.new(0.5, -307, 0.5, -172), Size = UDim2.new(0, 615, 0, 344), ClipsDescendants = true}), {bj(be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 50), Name = g({14, 53, 42, 24, 59, 40}, 90)}), {et, eu, bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 7), {Size = UDim2.new(0, 70, 0, 30), Position = UDim2.new(1, -90, 0, 10)}), {bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(0, 1, 1, 0), Position = UDim2.new(0.5, 0, 0, 0)}), g({9, 46, 40, 53, 49, 63}, 90)), ep, eq}), g({9, 63, 57, 53, 52, 62}, 90))}), er, es}), g({23, 59, 51, 52}, 90)) if (((100 % 7) == 2) and ej.ShowIcon) then et.Position = UDim2.new(0, 50, 0, -24) local ew = be(bb(g({19, 55, 59, 61, 63}, 90), ej.Icon), {Size = UDim2.new(0, 20, 0, 20), Position = UDim2.new(0, 25, 0, 15)}) ew.Parent = ev.TopBar end ae(er, ev) y(ep.MouseButton1Up, function() ev.Visible = false en = true n:MakeNotification({Name = g({19, 52, 46, 63, 40, 60, 59, 57, 63, 122, 18, 51, 62, 62, 63, 52}, 90), Content = g({14, 59, 42, 122, 8, 51, 61, 50, 46, 9, 50, 51, 60, 46, 122, 46, 53, 122, 40, 63, 53, 42, 63, 52, 122, 46, 50, 63, 122, 51, 52, 46, 63, 40, 60, 59, 57, 63}, 90), Time = 5}) ej.CloseCallback() end) y(h.InputBegan, function(ex) if (((12 * 12) == 144) and ((ex.KeyCode == Enum.KeyCode.RightShift) and en)) then ev.Visible = true end end) y(eq.MouseButton1Up, function() if (((3 ^ 2) == 9) and el) then i:Create(ev, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, 615, 0, 344)}):Play() eq.Ico.Image = g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 106, 109, 104, 109, 107, 99, 105, 105, 98}, 90) wait(.02) ev.ClipsDescendants = false es.Visible = true eu.Visible = true else ev.ClipsDescendants = true eu.Visible = false eq.Ico.Image = g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 106, 109, 104, 109, 104, 106, 98, 109, 106}, 90) i:Create(ev, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, (et.TextBounds.X + 140), 0, 50)}):Play() wait(0.1) es.Visible = false end el = not el end) local function ey() ev.Visible = false local ez = be(bb(g({19, 55, 59, 61, 63}, 90), ej.IntroIcon), {Parent = t, AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.4, 0), Size = UDim2.new(0, 28, 0, 28), ImageColor3 = Color3.fromRGB(255, 255, 255), ImageTransparency = 1}) local fa = be(bb(g({22, 59, 56, 63, 54}, 90), ej.IntroText, 14), {Parent = t, Size = UDim2.new(1, 0, 1, 0), AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 19, 0.5, 0), TextXAlignment = Enum.TextXAlignment.Center, Font = Enum.Font.GothamBold, TextTransparency = 1}) i:Create(ez, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0.5, 0, 0.5, 0)}):Play() wait(0.8) i:Create(ez, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -((fa.TextBounds.X / 2)), 0.5, 0)}):Play() wait(0.3) i:Create(fa, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play() wait(2) i:Create(fa, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play() ev.Visible = true ez:Destroy() fa:Destroy() end if (((7 * 7) == 49) and ej.IntroEnabled) then ey() end local fb = {} function fb:MakeTab(fc) fc = (fc or {}) fc.Name = (fc.Name or g({14, 59, 56}, 90)) fc.Icon = (fc.Icon or "") fc.PremiumOnly = (fc.PremiumOnly or false) local fd = bj(be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 0, 30), Parent = eo}), {bu(be(bb(g({19, 55, 59, 61, 63}, 90), fc.Icon), {AnchorPoint = Vector2.new(0, 0.5), Size = UDim2.new(0, 18, 0, 18), Position = UDim2.new(0, 10, 0.5, 0), ImageTransparency = 0.4, Name = g({19, 57, 53}, 90)}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), fc.Name, 14), {Size = UDim2.new(1, -35, 1, 0), Position = UDim2.new(0, 35, 0, 0), Font = Enum.Font.GothamSemibold, TextTransparency = 0.4, Name = g({14, 51, 46, 54, 63}, 90)}), g({14, 63, 34, 46}, 90))}) if (((1 + 1) == 2) and (r(fc.Icon) ~= nil)) then fd.Ico.Image = r(fc.Icon) end local fe = bu(bj(be(bb(g({9, 57, 40, 53, 54, 54, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 5), {Size = UDim2.new(1, -150, 1, -50), Position = UDim2.new(0, 150, 0, 50), Parent = ev, Visible = false, Name = g({19, 46, 63, 55, 25, 53, 52, 46, 59, 51, 52, 63, 40}, 90)}), {bb(g({22, 51, 41, 46}, 90), 0, 6), bb(g({10, 59, 62, 62, 51, 52, 61}, 90), 15, 10, 10, 15)}), g({30, 51, 44, 51, 62, 63, 40}, 90)) y(fe.UIListLayout:GetPropertyChangedSignal(g({27, 56, 41, 53, 54, 47, 46, 63, 25, 53, 52, 46, 63, 52, 46, 9, 51, 32, 63}, 90)), function() fe.CanvasSize = UDim2.new(0, 0, 0, (fe.UIListLayout.AbsoluteContentSize.Y + 30)) end) if (((15 * 15) == 225) and ek) then ek = false fd.Ico.ImageTransparency = 0 fd.Title.TextTransparency = 0 fd.Title.Font = Enum.Font.GothamBlack fe.Visible = true end y(fd.MouseButton1Click, function() for ff, fg in next, eo:GetChildren() do if (((100 % 7) == 2) and fg:IsA(g({14, 63, 34, 46, 24, 47, 46, 46, 53, 52}, 90))) then fg.Title.Font = Enum.Font.GothamSemibold i:Create(fg.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.4}):Play() i:Create(fg.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0.4}):Play() end end for fh, fi in next, ev:GetChildren() do if (((12 * 12) == 144) and (fi.Name == g({19, 46, 63, 55, 25, 53, 52, 46, 59, 51, 52, 63, 40}, 90))) then fi.Visible = false end end i:Create(fd.Ico, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play() i:Create(fd.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency = 0}):Play() fd.Title.Font = Enum.Font.GothamBlack fe.Visible = true end) local function fj(fk) local fl = {} function fl:AddLabel(fm) local fn = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 0.7, Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), fm, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90))}), g({9, 63, 57, 53, 52, 62}, 90)) local fo = {} function fo:Set(fp) fn.Content.Text = fp end return fo end function fl:AddParagraph(fq, fr) fq = (fq or g({14, 63, 34, 46}, 90)) fr = (fr or g({25, 53, 52, 46, 63, 52, 46}, 90)) local fs = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 30), BackgroundTransparency = 0.7, Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), fq, 15), {Size = UDim2.new(1, -12, 0, 14), Position = UDim2.new(0, 12, 0, 10), Font = Enum.Font.GothamBold, Name = g({14, 51, 46, 54, 63}, 90)}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), "", 13), {Size = UDim2.new(1, -24, 0, 0), Position = UDim2.new(0, 12, 0, 26), Font = Enum.Font.GothamSemibold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90), TextWrapped = true}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90))}), g({9, 63, 57, 53, 52, 62}, 90)) y(fs.Content:GetPropertyChangedSignal(g({14, 63, 34, 46}, 90)), function() fs.Content.Size = UDim2.new(1, -24, 0, fs.Content.TextBounds.Y) fs.Size = UDim2.new(1, 0, 0, (fs.Content.TextBounds.Y + 35)) end) fs.Content.Text = fr local ft = {} function ft:Set(fu) fs.Content.Text = fu end return ft end function fl:AddButton(fv) fv = (fv or {}) fv.Name = (fv.Name or g({24, 47, 46, 46, 53, 52}, 90)) fv.Callback = (fv.Callback or function() end) fv.Icon = (fv.Icon or g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 105, 99, 110, 110, 109, 106, 105, 111, 98, 109}, 90)) local fw = {} local fx = be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 1, 0)}) local fy = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 33), Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), fv.Name, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({19, 55, 59, 61, 63}, 90), fv.Icon), {Size = UDim2.new(0, 20, 0, 20), Position = UDim2.new(1, -30, 0, 7)}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), fx}), g({9, 63, 57, 53, 52, 62}, 90)) y(fx.MouseEnter, function() i:Create(fy, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() end) y(fx.MouseLeave, function() i:Create(fy, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = n.Themes[n.SelectedTheme].Second}):Play() end) y(fx.MouseButton1Up, function() i:Create(fy, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() spawn(function() fv.Callback() end) end) y(fx.MouseButton1Down, function() i:Create(fy, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 6), ((n.Themes[n.SelectedTheme].Second.G * 255) + 6), ((n.Themes[n.SelectedTheme].Second.B * 255) + 6))}):Play() end) function fw:Set(fz) fy.Content.Text = fz end return fw end function fl:AddToggle(ga) ga = (ga or {}) ga.Name = (ga.Name or g({14, 53, 61, 61, 54, 63}, 90)) ga.Default = (ga.Default or false) ga.Callback = (ga.Callback or function() end) ga.Color = (ga.Color or Color3.fromRGB(9, 99, 195)) ga.Flag = (ga.Flag or nil) ga.Save = (ga.Save or false) local gb = {Value = ga.Default, Save = ga.Save} local gc = be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 1, 0)}) local gd = bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), ga.Color, 0, 4), {Size = UDim2.new(0, 24, 0, 24), Position = UDim2.new(1, -24, 0.5, 0), AnchorPoint = Vector2.new(0.5, 0.5)}), {be(bb(g({9, 46, 40, 53, 49, 63}, 90)), {Color = ga.Color, Name = g({9, 46, 40, 53, 49, 63}, 90), Transparency = 0.5}), be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 105, 99, 110, 110, 108, 98, 106, 106, 99, 111}, 90)), {Size = UDim2.new(0, 20, 0, 20), AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0, 0.5, 0), ImageColor3 = Color3.fromRGB(255, 255, 255), Name = g({19, 57, 53}, 90)})}) local ge = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 38), Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), ga.Name, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), gd, gc}), g({9, 63, 57, 53, 52, 62}, 90)) function gb:Set(gf) gb.Value = gf i:Create(gd, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = ((gb.Value and ga.Color) or n.Themes.Default.Divider)}):Play() i:Create(gd.Stroke, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = ((gb.Value and ga.Color) or n.Themes.Default.Stroke)}):Play() i:Create(gd.Ico, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = ((gb.Value and 0) or 1), Size = ((gb.Value and UDim2.new(0, 20, 0, 20)) or UDim2.new(0, 8, 0, 8))}):Play() ga.Callback(gb.Value) end gb:Set(gb.Value) y(gc.MouseEnter, function() i:Create(ge, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() end) y(gc.MouseLeave, function() i:Create(ge, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = n.Themes[n.SelectedTheme].Second}):Play() end) y(gc.MouseButton1Up, function() i:Create(ge, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() cl(game.GameId) gb:Set(not gb.Value) end) y(gc.MouseButton1Down, function() i:Create(ge, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 6), ((n.Themes[n.SelectedTheme].Second.G * 255) + 6), ((n.Themes[n.SelectedTheme].Second.B * 255) + 6))}):Play() end) if (((3 ^ 2) == 9) and ga.Flag) then n.Flags[ga.Flag] = gb end return gb end function fl:AddSlider(gg) gg = (gg or {}) gg.Name = (gg.Name or g({9, 54, 51, 62, 63, 40}, 90)) gg.Min = (gg.Min or 0) gg.Max = (gg.Max or 100) gg.Increment = (gg.Increment or 1) gg.Default = (gg.Default or 50) gg.Callback = (gg.Callback or function() end) gg.ValueName = (gg.ValueName or "") gg.Color = (gg.Color or Color3.fromRGB(9, 149, 98)) gg.Flag = (gg.Flag or nil) gg.Save = (gg.Save or false) local gh = {Value = gg.Default, Save = gg.Save} local gi = false local gj = bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), gg.Color, 0, 5), {Size = UDim2.new(0, 0, 1, 0), BackgroundTransparency = 0.3, ClipsDescendants = true}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), g({44, 59, 54, 47, 63}, 90), 13), {Size = UDim2.new(1, -12, 0, 14), Position = UDim2.new(0, 12, 0, 6), Font = Enum.Font.GothamBold, Name = g({12, 59, 54, 47, 63}, 90), TextTransparency = 0}), g({14, 63, 34, 46}, 90))}) local gk = bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), gg.Color, 0, 5), {Size = UDim2.new(1, -24, 0, 26), Position = UDim2.new(0, 12, 0, 30), BackgroundTransparency = 0.9}), {be(bb(g({9, 46, 40, 53, 49, 63}, 90)), {Color = gg.Color}), bu(be(bb(g({22, 59, 56, 63, 54}, 90), g({44, 59, 54, 47, 63}, 90), 13), {Size = UDim2.new(1, -12, 0, 14), Position = UDim2.new(0, 12, 0, 6), Font = Enum.Font.GothamBold, Name = g({12, 59, 54, 47, 63}, 90), TextTransparency = 0.8}), g({14, 63, 34, 46}, 90)), gj}) local gl = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 4), {Size = UDim2.new(1, 0, 0, 65), Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), gg.Name, 15), {Size = UDim2.new(1, -12, 0, 14), Position = UDim2.new(0, 12, 0, 10), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), gk}), g({9, 63, 57, 53, 52, 62}, 90)) gk.InputBegan:Connect(function(gm) if (((7 * 7) == 49) and (gm.UserInputType == Enum.UserInputType.MouseButton1)) then gi = true end end) gk.InputEnded:Connect(function(gn) if (((1 + 1) == 2) and (gn.UserInputType == Enum.UserInputType.MouseButton1)) then gi = false end end) h.InputChanged:Connect(function(go) if (((15 * 15) == 225) and (gi and (go.UserInputType == Enum.UserInputType.MouseMovement))) then local gp = math.clamp((((go.Position.X - gk.AbsolutePosition.X)) / gk.AbsoluteSize.X), 0, 1) gh:Set((gg.Min + ((((gg.Max - gg.Min)) * gp)))) cl(game.GameId) end end) function gh:Set(gq) self.Value = math.clamp(bo(gq, gg.Increment), gg.Min, gg.Max) i:Create(gj, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.fromScale((((self.Value - gg.Min)) / ((gg.Max - gg.Min))), 1)}):Play() gk.Value.Text = (tostring(self.Value) .. (g({122}, 90) .. gg.ValueName)) gj.Value.Text = (tostring(self.Value) .. (g({122}, 90) .. gg.ValueName)) gg.Callback(self.Value) end gh:Set(gh.Value) if (((100 % 7) == 2) and gg.Flag) then n.Flags[gg.Flag] = gh end return gh end function fl:AddDropdown(gr) gr = (gr or {}) gr.Name = (gr.Name or g({30, 40, 53, 42, 62, 53, 45, 52}, 90)) gr.Options = (gr.Options or {}) gr.Default = (gr.Default or "") gr.Callback = (gr.Callback or function() end) gr.Flag = (gr.Flag or nil) gr.Save = (gr.Save or false) local gs = {Value = gr.Default, Options = gr.Options, Buttons = {}, Toggled = false, Type = g({30, 40, 53, 42, 62, 53, 45, 52}, 90), Save = gr.Save} local gt = 5 if (((12 * 12) == 144) and not table.find(gs.Options, gs.Value)) then gs.Value = g({116, 116, 116}, 90) end local gu = bb(g({22, 51, 41, 46}, 90)) local gv = bu(be(bj(bb(g({9, 57, 40, 53, 54, 54, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(40, 40, 40), 4), {gu}), {Parent = fk, Position = UDim2.new(0, 0, 0, 38), Size = UDim2.new(1, 0, 1, -38), ClipsDescendants = true}), g({30, 51, 44, 51, 62, 63, 40}, 90)) local gw = be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 1, 0)}) local gx = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 38), Parent = fk, ClipsDescendants = true}), {gv, be(bj(bb(g({14, 28, 40, 59, 55, 63}, 90)), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), gr.Name, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 109, 106, 109, 104, 109, 106, 108, 109, 99, 108}, 90)), {Size = UDim2.new(0, 20, 0, 20), AnchorPoint = Vector2.new(0, 0.5), Position = UDim2.new(1, -30, 0.5, 0), ImageColor3 = Color3.fromRGB(240, 240, 240), Name = g({19, 57, 53}, 90)}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), g({9, 63, 54, 63, 57, 46, 63, 62}, 90), 13), {Size = UDim2.new(1, -40, 1, 0), Font = Enum.Font.Gotham, Name = g({9, 63, 54, 63, 57, 46, 63, 62}, 90), TextXAlignment = Enum.TextXAlignment.Right}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)), bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 1), Position = UDim2.new(0, 0, 1, -1), Name = g({22, 51, 52, 63}, 90), Visible = false}), g({9, 46, 40, 53, 49, 63}, 90)), gw}), {Size = UDim2.new(1, 0, 0, 38), ClipsDescendants = true, Name = g({28}, 90)}), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), bb(g({25, 53, 40, 52, 63, 40}, 90))}), g({9, 63, 57, 53, 52, 62}, 90)) y(gu:GetPropertyChangedSignal(g({27, 56, 41, 53, 54, 47, 46, 63, 25, 53, 52, 46, 63, 52, 46, 9, 51, 32, 63}, 90)), function() gv.CanvasSize = UDim2.new(0, 0, 0, gu.AbsoluteContentSize.Y) end) local function gy(gz) for ha, hb in pairs(gz) do local hc = bu(be(bj(bb(g({24, 47, 46, 46, 53, 52}, 90), Color3.fromRGB(40, 40, 40)), {bb(g({25, 53, 40, 52, 63, 40}, 90), 0, 6), bu(be(bb(g({22, 59, 56, 63, 54}, 90), hb, 13, 0.4), {Position = UDim2.new(0, 8, 0, 0), Size = UDim2.new(1, -8, 1, 0), Name = g({14, 51, 46, 54, 63}, 90)}), g({14, 63, 34, 46}, 90))}), {Parent = gv, Size = UDim2.new(1, 0, 0, 28), BackgroundTransparency = 1, ClipsDescendants = true}), g({30, 51, 44, 51, 62, 63, 40}, 90)) y(hc.MouseButton1Click, function() gs:Set(hb) cl(game.GameId) end) gs.Buttons[hb] = hc end end function gs:Refresh(hd, he) if (((3 ^ 2) == 9) and he) then for hf, hg in pairs(gs.Buttons) do hg:Destroy() end table.clear(gs.Options) table.clear(gs.Buttons) end gs.Options = hd gy(gs.Options) end function gs:Set(hh) if (((7 * 7) == 49) and not table.find(gs.Options, hh)) then gs.Value = g({116, 116, 116}, 90) gx.F.Selected.Text = gs.Value for hi, hj in pairs(gs.Buttons) do i:Create(hj, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play() i:Create(hj.Title, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0.4}):Play() end return end gs.Value = hh gx.F.Selected.Text = gs.Value for hk, hl in pairs(gs.Buttons) do i:Create(hl, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play() i:Create(hl.Title, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0.4}):Play() end i:Create(gs.Buttons[hh], TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play() i:Create(gs.Buttons[hh].Title, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play() return gr.Callback(gs.Value) end y(gw.MouseButton1Click, function() gs.Toggled = not gs.Toggled gx.F.Line.Visible = gs.Toggled i:Create(gx.F.Ico, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = ((gs.Toggled and 180) or 0)}):Play() if (((1 + 1) == 2) and (#gs.Options > gt)) then i:Create(gx, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = ((gs.Toggled and UDim2.new(1, 0, 0, (38 + ((gt * 28))))) or UDim2.new(1, 0, 0, 38))}):Play() else i:Create(gx, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = ((gs.Toggled and UDim2.new(1, 0, 0, (gu.AbsoluteContentSize.Y + 38))) or UDim2.new(1, 0, 0, 38))}):Play() end end) gs:Refresh(gs.Options, false) gs:Set(gs.Value) if (((15 * 15) == 225) and gr.Flag) then n.Flags[gr.Flag] = gs end return gs end function fl:AddBind(hm) hm.Name = (hm.Name or g({24, 51, 52, 62}, 90)) hm.Default = (hm.Default or Enum.KeyCode.Unknown) hm.Hold = (hm.Hold or false) hm.Callback = (hm.Callback or function() end) hm.Flag = (hm.Flag or nil) hm.Save = (hm.Save or false) local hn = {Value, Binding = false, Type = g({24, 51, 52, 62}, 90), Save = hm.Save} local ho = false local hp = be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 1, 0)}) local hq = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 4), {Size = UDim2.new(0, 24, 0, 24), Position = UDim2.new(1, -12, 0.5, 0), AnchorPoint = Vector2.new(1, 0.5)}), {bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), hm.Name, 14), {Size = UDim2.new(1, 0, 1, 0), Font = Enum.Font.GothamBold, TextXAlignment = Enum.TextXAlignment.Center, Name = g({12, 59, 54, 47, 63}, 90)}), g({14, 63, 34, 46}, 90))}), g({23, 59, 51, 52}, 90)) local hr = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 38), Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), hm.Name, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), hq, hp}), g({9, 63, 57, 53, 52, 62}, 90)) y(hq.Value:GetPropertyChangedSignal(g({14, 63, 34, 46}, 90)), function() i:Create(hq, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, (hq.Value.TextBounds.X + 16), 0, 24)}):Play() end) y(hp.InputEnded, function(hs) if (((100 % 7) == 2) and (hs.UserInputType == Enum.UserInputType.MouseButton1)) then if (((12 * 12) == 144) and hn.Binding) then return end hn.Binding = true hq.Value.Text = "" end end) y(h.InputBegan, function(ht) if (((3 ^ 2) == 9) and h:GetFocusedTextBox()) then return end if (((7 * 7) == 49) and ((((ht.KeyCode.Name == hn.Value) or (ht.UserInputType.Name == hn.Value))) and not hn.Binding)) then if (((1 + 1) == 2) and hm.Hold) then ho = true hm.Callback(ho) else hm.Callback() end elseif (((15 * 15) == 225) and hn.Binding) then local hu pcall(function() if (((100 % 7) == 2) and not cs(cr, ht.KeyCode)) then hu = ht.KeyCode end end) pcall(function() if (((12 * 12) == 144) and (cs(cq, ht.UserInputType) and not hu)) then hu = ht.UserInputType end end) hu = (hu or hn.Value) hn:Set(hu) cl(game.GameId) end end) y(h.InputEnded, function(hv) if (((3 ^ 2) == 9) and ((hv.KeyCode.Name == hn.Value) or (hv.UserInputType.Name == hn.Value))) then if (((7 * 7) == 49) and (hm.Hold and ho)) then ho = false hm.Callback(ho) end end end) y(hp.MouseEnter, function() i:Create(hr, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() end) y(hp.MouseLeave, function() i:Create(hr, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = n.Themes[n.SelectedTheme].Second}):Play() end) y(hp.MouseButton1Up, function() i:Create(hr, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() end) y(hp.MouseButton1Down, function() i:Create(hr, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 6), ((n.Themes[n.SelectedTheme].Second.G * 255) + 6), ((n.Themes[n.SelectedTheme].Second.B * 255) + 6))}):Play() end) function hn:Set(hw) hn.Binding = false hn.Value = (hw or hn.Value) hn.Value = (hn.Value.Name or hn.Value) hq.Value.Text = hn.Value end hn:Set(hm.Default) if (((1 + 1) == 2) and hm.Flag) then n.Flags[hm.Flag] = hn end return hn end function fl:AddTextbox(hx) hx = (hx or {}) hx.Name = (hx.Name or g({14, 63, 34, 46, 56, 53, 34}, 90)) hx.Default = (hx.Default or "") hx.TextDisappear = (hx.TextDisappear or false) hx.Callback = (hx.Callback or function() end) local hy = be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 1, 0)}) local hz = bu(ap(g({14, 63, 34, 46, 24, 53, 34}, 90), {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(255, 255, 255), PlaceholderColor3 = Color3.fromRGB(210, 210, 210), PlaceholderText = g({19, 52, 42, 47, 46}, 90), Font = Enum.Font.GothamSemibold, TextXAlignment = Enum.TextXAlignment.Center, TextSize = 14, ClearTextOnFocus = false}), g({14, 63, 34, 46}, 90)) local ia = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 4), {Size = UDim2.new(0, 24, 0, 24), Position = UDim2.new(1, -12, 0.5, 0), AnchorPoint = Vector2.new(1, 0.5)}), {bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), hz}), g({23, 59, 51, 52}, 90)) local ib = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 38), Parent = fk}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), hx.Name, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), ia, hy}), g({9, 63, 57, 53, 52, 62}, 90)) y(hz:GetPropertyChangedSignal(g({14, 63, 34, 46}, 90)), function() i:Create(ia, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, (hz.TextBounds.X + 16), 0, 24)}):Play() end) y(hz.FocusLost, function() hx.Callback(hz.Text) if (((15 * 15) == 225) and hx.TextDisappear) then hz.Text = "" end end) hz.Text = hx.Default y(hy.MouseEnter, function() i:Create(ib, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() end) y(hy.MouseLeave, function() i:Create(ib, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = n.Themes[n.SelectedTheme].Second}):Play() end) y(hy.MouseButton1Up, function() i:Create(ib, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 3), ((n.Themes[n.SelectedTheme].Second.G * 255) + 3), ((n.Themes[n.SelectedTheme].Second.B * 255) + 3))}):Play() hz:CaptureFocus() end) y(hy.MouseButton1Down, function() i:Create(ib, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(((n.Themes[n.SelectedTheme].Second.R * 255) + 6), ((n.Themes[n.SelectedTheme].Second.G * 255) + 6), ((n.Themes[n.SelectedTheme].Second.B * 255) + 6))}):Play() end) end function fl:AddColorpicker(ic) ic = (ic or {}) ic.Name = (ic.Name or g({25, 53, 54, 53, 40, 42, 51, 57, 49, 63, 40}, 90)) ic.Default = (ic.Default or Color3.fromRGB(255, 255, 255)) ic.Callback = (ic.Callback or function() end) ic.Flag = (ic.Flag or nil) ic.Save = (ic.Save or false) local id, ie, ig = 1, 1, 1 local ih = {Value = ic.Default, Toggled = false, Type = g({25, 53, 54, 53, 40, 42, 51, 57, 49, 63, 40}, 90), Save = ic.Save} local ii = ap(g({19, 55, 59, 61, 63, 22, 59, 56, 63, 54}, 90), {Size = UDim2.new(0, 18, 0, 18), Position = UDim2.new(select(3, Color3.toHSV(ih.Value))), ScaleType = Enum.ScaleType.Fit, AnchorPoint = Vector2.new(0.5, 0.5), BackgroundTransparency = 1, Image = g({50, 46, 46, 42, 96, 117, 117, 45, 45, 45, 116, 40, 53, 56, 54, 53, 34, 116, 57, 53, 55, 117, 59, 41, 41, 63, 46, 117, 101, 51, 62, 103, 110, 98, 106, 111, 108, 105, 99, 106, 106, 106}, 90)}) local ij = ap(g({19, 55, 59, 61, 63, 22, 59, 56, 63, 54}, 90), {Size = UDim2.new(0, 18, 0, 18), Position = UDim2.new(0.5, 0, (1 - select(1, Color3.toHSV(ih.Value)))), ScaleType = Enum.ScaleType.Fit, AnchorPoint = Vector2.new(0.5, 0.5), BackgroundTransparency = 1, Image = g({50, 46, 46, 42, 96, 117, 117, 45, 45, 45, 116, 40, 53, 56, 54, 53, 34, 116, 57, 53, 55, 117, 59, 41, 41, 63, 46, 117, 101, 51, 62, 103, 110, 98, 106, 111, 108, 105, 99, 106, 106, 106}, 90)}) local ik = ap(g({19, 55, 59, 61, 63, 22, 59, 56, 63, 54}, 90), {Size = UDim2.new(1, -25, 1, 0), Visible = false, Image = g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 110, 107, 111, 111, 98, 106, 107, 104, 111, 104}, 90)}, {ap(g({15, 19, 25, 53, 40, 52, 63, 40}, 90), {CornerRadius = UDim.new(0, 5)}), ii}) local il = ap(g({28, 40, 59, 55, 63}, 90), {Size = UDim2.new(0, 20, 1, 0), Position = UDim2.new(1, -20, 0, 0), Visible = false}, {ap(g({15, 19, 29, 40, 59, 62, 51, 63, 52, 46}, 90), {Rotation = 270, Color = ColorSequence.new({ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)), ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(0, 255, 255)), ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)), ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))})}), ap(g({15, 19, 25, 53, 40, 52, 63, 40}, 90), {CornerRadius = UDim.new(0, 5)}), ij}) local im = ap(g({28, 40, 59, 55, 63}, 90), {Position = UDim2.new(0, 0, 0, 32), Size = UDim2.new(1, 0, 1, -32), BackgroundTransparency = 1, ClipsDescendants = true}, {il, ik, ap(g({15, 19, 10, 59, 62, 62, 51, 52, 61}, 90), {PaddingLeft = UDim.new(0, 35), PaddingRight = UDim.new(0, 35), PaddingBottom = UDim.new(0, 10), PaddingTop = UDim.new(0, 17)})}) local io = be(bb(g({24, 47, 46, 46, 53, 52}, 90)), {Size = UDim2.new(1, 0, 1, 0)}) local ip = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 4), {Size = UDim2.new(0, 24, 0, 24), Position = UDim2.new(1, -12, 0.5, 0), AnchorPoint = Vector2.new(1, 0.5)}), {bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90))}), g({23, 59, 51, 52}, 90)) local iq = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 5), {Size = UDim2.new(1, 0, 0, 38), Parent = fk}), {be(bj(bb(g({14, 28, 40, 59, 55, 63}, 90)), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), ic.Name, 15), {Size = UDim2.new(1, -12, 1, 0), Position = UDim2.new(0, 12, 0, 0), Font = Enum.Font.GothamBold, Name = g({25, 53, 52, 46, 63, 52, 46}, 90)}), g({14, 63, 34, 46}, 90)), ip, io, bu(be(bb(g({28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 1), Position = UDim2.new(0, 0, 1, -1), Name = g({22, 51, 52, 63}, 90), Visible = false}), g({9, 46, 40, 53, 49, 63}, 90))}), {Size = UDim2.new(1, 0, 0, 38), ClipsDescendants = true, Name = g({28}, 90)}), im, bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90))}), g({9, 63, 57, 53, 52, 62}, 90)) y(io.MouseButton1Click, function() ih.Toggled = not ih.Toggled i:Create(iq, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = ((ih.Toggled and UDim2.new(1, 0, 0, 148)) or UDim2.new(1, 0, 0, 38))}):Play() ik.Visible = ih.Toggled il.Visible = ih.Toggled iq.F.Line.Visible = ih.Toggled end) local function ir() ip.BackgroundColor3 = Color3.fromHSV(id, ie, ig) ik.BackgroundColor3 = Color3.fromHSV(id, 1, 1) ih:Set(ip.BackgroundColor3) ic.Callback(ip.BackgroundColor3) cl(game.GameId) end id = (1 - ((math.clamp((ij.AbsolutePosition.Y - il.AbsolutePosition.Y), 0, il.AbsoluteSize.Y) / il.AbsoluteSize.Y))) ie = ((math.clamp((ii.AbsolutePosition.X - ik.AbsolutePosition.X), 0, ik.AbsoluteSize.X) / ik.AbsoluteSize.X)) ig = (1 - ((math.clamp((ii.AbsolutePosition.Y - ik.AbsolutePosition.Y), 0, ik.AbsoluteSize.Y) / ik.AbsoluteSize.Y))) y(ik.InputBegan, function(is) if (((100 % 7) == 2) and (is.UserInputType == Enum.UserInputType.MouseButton1)) then if (((12 * 12) == 144) and ColorInput) then ColorInput:Disconnect() end ColorInput = y(j.RenderStepped, function() local it = ((math.clamp((l.X - ik.AbsolutePosition.X), 0, ik.AbsoluteSize.X) / ik.AbsoluteSize.X)) local iu = ((math.clamp((l.Y - ik.AbsolutePosition.Y), 0, ik.AbsoluteSize.Y) / ik.AbsoluteSize.Y)) ii.Position = UDim2.new(it, 0, iu, 0) ie = it ig = (1 - iu) ir() end) end end) y(ik.InputEnded, function(iv) if (((3 ^ 2) == 9) and (iv.UserInputType == Enum.UserInputType.MouseButton1)) then if (((7 * 7) == 49) and ColorInput) then ColorInput:Disconnect() end end end) y(il.InputBegan, function(iw) if (((1 + 1) == 2) and (iw.UserInputType == Enum.UserInputType.MouseButton1)) then if (((15 * 15) == 225) and HueInput) then HueInput:Disconnect() end HueInput = y(j.RenderStepped, function() local ix = ((math.clamp((l.Y - il.AbsolutePosition.Y), 0, il.AbsoluteSize.Y) / il.AbsoluteSize.Y)) ij.Position = UDim2.new(0.5, 0, ix, 0) id = (1 - ix) ir() end) end end) y(il.InputEnded, function(iy) if (((100 % 7) == 2) and (iy.UserInputType == Enum.UserInputType.MouseButton1)) then if (((12 * 12) == 144) and HueInput) then HueInput:Disconnect() end end end) function ih:Set(iz) ih.Value = iz ip.BackgroundColor3 = ih.Value ic.Callback(ih.Value) end ih:Set(ih.Value) if (((3 ^ 2) == 9) and ic.Flag) then n.Flags[ic.Flag] = ih end return ih end function fl:AddProfileCard(ja) ja = (ja or {}) ja.Stats = (ja.Stats or {}) local jb = bu(bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 8), {Size = UDim2.new(1, 0, 0, 96), Parent = fk}), {bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90)), bb(g({10, 59, 62, 62, 51, 52, 61}, 90), 14, 14, 14, 14)}), g({9, 63, 57, 53, 52, 62}, 90)) local jc = bj(be(bb(g({8, 53, 47, 52, 62, 28, 40, 59, 55, 63}, 90), Color3.fromRGB(255, 255, 255), 0, 10), {Size = UDim2.new(0, 68, 0, 68), Position = UDim2.new(0, 0, 0, 0)}), {be(bb(g({19, 55, 59, 61, 63}, 90), (g({50, 46, 46, 42, 41, 96, 117, 117, 45, 45, 45, 116, 40, 53, 56, 54, 53, 34, 116, 57, 53, 55, 117, 50, 63, 59, 62, 41, 50, 53, 46, 119, 46, 50, 47, 55, 56, 52, 59, 51, 54, 117, 51, 55, 59, 61, 63, 101, 47, 41, 63, 40, 19, 62, 103}, 90) .. (k.UserId .. g({124, 45, 51, 62, 46, 50, 103, 110, 104, 106, 124, 50, 63, 51, 61, 50, 46, 103, 110, 104, 106, 124, 60, 53, 40, 55, 59, 46, 103, 42, 52, 61}, 90)))), {Size = UDim2.new(1, 0, 1, 0)}), bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 110, 106, 105, 107, 98, 98, 99, 99, 104, 98}, 90)), {Size = UDim2.new(1, 0, 1, 0)}), g({9, 63, 57, 53, 52, 62}, 90)), bu(bb(g({9, 46, 40, 53, 49, 63}, 90)), g({9, 46, 40, 53, 49, 63}, 90))}) jc.Parent = jb local jd = be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, -84, 1, 0), Position = UDim2.new(0, 84, 0, 0), Parent = jb}) bu(be(bb(g({22, 59, 56, 63, 54}, 90), (ja.Title or k.DisplayName), 18), {Size = UDim2.new(1, 0, 0, 22), Position = UDim2.new(0, 0, 0, 0), Font = Enum.Font.GothamBlack, Parent = jd}), g({14, 63, 34, 46}, 90)) bu(be(bb(g({22, 59, 56, 63, 54}, 90), (ja.Subtitle or ((g({26}, 90) .. k.Name))), 13), {Size = UDim2.new(1, 0, 0, 16), Position = UDim2.new(0, 0, 0, 24), Font = Enum.Font.GothamSemibold, Parent = jd}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)) local je = be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 24), Position = UDim2.new(0, 0, 1, -26), Parent = jd}) local jf = bb(g({22, 51, 41, 46}, 90), 0, 18) jf.FillDirection = Enum.FillDirection.Horizontal jf.Parent = je for jg, jh in ipairs(ja.Stats) do local ji = be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(0, 0, 1, 0), AutomaticSize = Enum.AutomaticSize.X, Parent = je}) bu(be(bb(g({22, 59, 56, 63, 54}, 90), (((jh.Value or "")) .. g({122, 122}, 90)), 13), {Size = UDim2.new(0, 0, 1, 0), AutomaticSize = Enum.AutomaticSize.X, Font = Enum.Font.GothamBold, Parent = ji}), g({14, 63, 34, 46}, 90)) bu(be(bb(g({22, 59, 56, 63, 54}, 90), (jh.Label or ""), 13), {Size = UDim2.new(0, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0), AutomaticSize = Enum.AutomaticSize.X, Font = Enum.Font.Gotham, Parent = ji}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)) end return jb end return fl end local jj = {} function jj:AddSection(jk) jk.Name = (jk.Name or g({9, 63, 57, 46, 51, 53, 52}, 90)) local jl = bj(be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 0, 26), Parent = fe}), {bu(be(bb(g({22, 59, 56, 63, 54}, 90), jk.Name, 14), {Size = UDim2.new(1, -12, 0, 16), Position = UDim2.new(0, 0, 0, 3), Font = Enum.Font.GothamSemibold}), g({14, 63, 34, 46, 30, 59, 40, 49}, 90)), bj(be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {AnchorPoint = Vector2.new(0, 0), Size = UDim2.new(1, 0, 1, -24), Position = UDim2.new(0, 0, 0, 23), Name = g({18, 53, 54, 62, 63, 40}, 90)}), {bb(g({22, 51, 41, 46}, 90), 0, 6)})}) y(jl.Holder.UIListLayout:GetPropertyChangedSignal(g({27, 56, 41, 53, 54, 47, 46, 63, 25, 53, 52, 46, 63, 52, 46, 9, 51, 32, 63}, 90)), function() jl.Size = UDim2.new(1, 0, 0, (jl.Holder.UIListLayout.AbsoluteContentSize.Y + 31)) jl.Holder.Size = UDim2.new(1, 0, 0, jl.Holder.UIListLayout.AbsoluteContentSize.Y) end) local jm = {} for jn, jo in next, fj(jl.Holder) do jm[jn] = jo end return jm end for jp, jq in next, fj(fe) do jj[jp] = jq end if (((7 * 7) == 49) and fc.PremiumOnly) then for jr, js in next, jj do jj[jr] = function() end end fe:FindFirstChild(g({15, 19, 22, 51, 41, 46, 22, 59, 35, 53, 47, 46}, 90)):Destroy() fe:FindFirstChild(g({15, 19, 10, 59, 62, 62, 51, 52, 61}, 90)):Destroy() bj(be(bb(g({14, 28, 40, 59, 55, 63}, 90)), {Size = UDim2.new(1, 0, 1, 0), Parent = ItemParent}), {bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 105, 108, 107, 106, 104, 105, 99, 99, 108, 106}, 90)), {Size = UDim2.new(0, 18, 0, 18), Position = UDim2.new(0, 15, 0, 15), ImageTransparency = 0.4}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), g({15, 52, 59, 47, 46, 50, 53, 40, 51, 41, 63, 62, 122, 27, 57, 57, 63, 41, 41}, 90), 14), {Size = UDim2.new(1, -38, 0, 14), Position = UDim2.new(0, 38, 0, 18), TextTransparency = 0.4}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({19, 55, 59, 61, 63}, 90), g({40, 56, 34, 59, 41, 41, 63, 46, 51, 62, 96, 117, 117, 110, 110, 98, 105, 105, 110, 111, 98, 109, 111}, 90)), {Size = UDim2.new(0, 56, 0, 56), Position = UDim2.new(0, 84, 0, 110)}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), g({10, 40, 63, 55, 51, 47, 55, 122, 28, 63, 59, 46, 47, 40, 63, 41}, 90), 14), {Size = UDim2.new(1, -150, 0, 14), Position = UDim2.new(0, 150, 0, 112), Font = Enum.Font.GothamBold}), g({14, 63, 34, 46}, 90)), bu(be(bb(g({22, 59, 56, 63, 54}, 90), g({14, 50, 51, 41, 122, 42, 59, 40, 46, 122, 53, 60, 122, 46, 50, 63, 122, 41, 57, 40, 51, 42, 46, 122, 51, 41, 122, 54, 53, 57, 49, 63, 62, 122, 46, 53, 122, 9, 51, 40, 51, 47, 41, 122, 10, 40, 63, 55, 51, 47, 55, 122, 47, 41, 63, 40, 41, 116, 122, 10, 47, 40, 57, 50, 59, 41, 63, 122, 10, 40, 63, 55, 51, 47, 55, 122, 51, 52, 122, 46, 50, 63, 122, 30, 51, 41, 57, 53, 40, 62, 122, 41, 63, 40, 44, 63, 40, 122, 114, 41, 51, 40, 51, 47, 41, 116, 55, 63, 52, 47, 117, 62, 51, 41, 57, 53, 40, 62, 115}, 90), 12), {Size = UDim2.new(1, -200, 0, 14), Position = UDim2.new(0, 150, 0, 138), TextWrapped = true, TextTransparency = 0.4}), g({14, 63, 34, 46}, 90))}) end return jj end do local jt = fb:MakeTab({Name = g({18, 53, 55, 63}, 90), Icon = g({50, 53, 55, 63}, 90)}) jt:AddProfileCard({Title = k.DisplayName, Subtitle = (g({26}, 90) .. k.Name), Stats = {{Label = g({27, 57, 57, 53, 47, 52, 46, 122, 27, 61, 63}, 90), Value = (tostring(k.AccountAge) .. g({122, 62, 59, 35, 41}, 90))}, {Label = g({23, 63, 55, 56, 63, 40, 41, 50, 51, 42}, 90), Value = tostring(k.MembershipType.Name)}, {Label = g({15, 41, 63, 40, 122, 19, 30}, 90), Value = tostring(k.UserId)}}}) jt:AddParagraph(g({13, 63, 54, 57, 53, 55, 63}, 90), (g({13, 63, 54, 57, 53, 55, 63, 122, 56, 59, 57, 49, 118, 122}, 90) .. (k.DisplayName .. (g({116, 122, 15, 41, 63, 122, 46, 50, 63, 122, 46, 59, 56, 41, 122, 53, 52, 122, 46, 50, 63, 122, 54, 63, 60, 46, 122, 46, 53, 122, 61, 63, 46, 122, 59, 40, 53, 47, 52, 62, 122}, 90) .. (ej.Name .. g({116}, 90)))))) jt:AddSection({Name = g({9, 63, 41, 41, 51, 53, 52}, 90)}):AddLabel((g({29, 59, 55, 63, 96, 122}, 90) .. game:GetService(g({23, 59, 40, 49, 63, 46, 42, 54, 59, 57, 63, 9, 63, 40, 44, 51, 57, 63}, 90)):GetProductInfo(game.PlaceId).Name)) end return fb end function n:Destroy() t:Destroy() end return n
+-- Novas Orion Lib (Open SRC)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local HttpService = game:GetService("HttpService")
+
+local Library = {
+	Elements = {},
+	ThemeObjects = {},
+	Connections = {},
+	Flags = {},
+	SearchRegistry = {},
+	Themes = {
+		Default = {
+			Main = Color3.fromRGB(20, 20, 22),
+			Second = Color3.fromRGB(30, 30, 32),
+			Stroke = Color3.fromRGB(60, 60, 65),
+			Divider = Color3.fromRGB(40, 40, 45),
+			Text = Color3.fromRGB(240, 240, 245),
+			TextDark = Color3.fromRGB(160, 160, 165),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+		Black = {
+			Main = Color3.fromRGB(10, 10, 12),
+			Second = Color3.fromRGB(18, 18, 20),
+			Stroke = Color3.fromRGB(45, 45, 50),
+			Divider = Color3.fromRGB(28, 28, 32),
+			Text = Color3.fromRGB(240, 240, 245),
+			TextDark = Color3.fromRGB(140, 140, 145),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+		White = {
+			Main = Color3.fromRGB(230, 230, 235),
+			Second = Color3.fromRGB(215, 215, 220),
+			Stroke = Color3.fromRGB(180, 180, 185),
+			Divider = Color3.fromRGB(195, 195, 200),
+			Text = Color3.fromRGB(20, 20, 25),
+			TextDark = Color3.fromRGB(80, 80, 85),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+		Gray = {
+			Main = Color3.fromRGB(55, 55, 60),
+			Second = Color3.fromRGB(70, 70, 75),
+			Stroke = Color3.fromRGB(100, 100, 105),
+			Divider = Color3.fromRGB(85, 85, 90),
+			Text = Color3.fromRGB(235, 235, 240),
+			TextDark = Color3.fromRGB(170, 170, 175),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+		Blue = {
+			Main = Color3.fromRGB(10, 20, 45),
+			Second = Color3.fromRGB(15, 30, 65),
+			Stroke = Color3.fromRGB(40, 70, 130),
+			Divider = Color3.fromRGB(25, 50, 95),
+			Text = Color3.fromRGB(200, 220, 255),
+			TextDark = Color3.fromRGB(110, 150, 210),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+		Purple = {
+			Main = Color3.fromRGB(25, 10, 45),
+			Second = Color3.fromRGB(38, 15, 65),
+			Stroke = Color3.fromRGB(90, 40, 150),
+			Divider = Color3.fromRGB(60, 25, 100),
+			Text = Color3.fromRGB(220, 200, 255),
+			TextDark = Color3.fromRGB(155, 120, 210),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+		Red = {
+			Main = Color3.fromRGB(35, 8, 8),
+			Second = Color3.fromRGB(55, 12, 12),
+			Stroke = Color3.fromRGB(130, 35, 35),
+			Divider = Color3.fromRGB(85, 20, 20),
+			Text = Color3.fromRGB(255, 210, 210),
+			TextDark = Color3.fromRGB(200, 120, 120),
+			MainTransparency = 0,
+			SecondTransparency = 0,
+			FrameTransparency = 0
+		},
+	},
+	SelectedTheme = "Black",
+	Font = Enum.Font.Gotham,
+	UserConfig = {},
+	ConfigFile = nil
+}
+
+local function PackColor(Color)
+	return {R = Color.R * 255, G = Color.G * 255, B = Color.B * 255}
+end
+
+local function UnpackColor(Color)
+	return Color3.fromRGB(Color.R, Color.G, Color.B)
+end
+
+function Library:LoadConfig()
+	if not self.ConfigFile then return end
+	if isfile and isfile(self.ConfigFile) then
+		local success, data = pcall(function()
+			return HttpService:JSONDecode(readfile(self.ConfigFile))
+		end)
+		if success and data then
+			self.UserConfig = data
+			-- Load saved theme
+			if data.__theme and self.Themes[data.__theme] then
+				self.SelectedTheme = data.__theme
+			end
+			for flag, value in pairs(self.UserConfig) do
+				if flag ~= "__theme" and self.Flags[flag] then
+					if self.Flags[flag].Type == "Colorpicker" then
+						self.Flags[flag]:Set(UnpackColor(value))
+					else
+						self.Flags[flag]:Set(value)
+					end
+				end
+			end
+		end
+	end
+end
+
+function Library:SaveConfig()
+	if not self.ConfigFile or not writefile then return end
+	pcall(function()
+		self.UserConfig.__theme = self.SelectedTheme
+		writefile(self.ConfigFile, HttpService:JSONEncode(self.UserConfig))
+	end)
+end
+
+local function GetIcon(IconName)
+	return nil
+end
+
+function Library:CleanupInstance()
+	for _, instance in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if instance:IsA("ScreenGui") and instance.Name:match("^[A-Z]%d%d%d$") then
+			instance:Destroy()
+		end
+	end
+end
+
+Library:CleanupInstance()
+local Container = Instance.new("ScreenGui")
+Container.Name = string.char(math.random(65, 90))..tostring(math.random(100, 999))
+Container.DisplayOrder = 2147483647
+Container.Parent = game:GetService("CoreGui")
+
+function Library:IsRunning()
+	return Container and Container.Parent == game:GetService("CoreGui")
+end
+
+local function AddConnection(Signal, Function)
+	if not Library:IsRunning() then return end
+	local SignalConnect = Signal:Connect(Function)
+	table.insert(Library.Connections, SignalConnect)
+	return SignalConnect
+end
+
+task.spawn(function()
+	while Library:IsRunning() do wait() end
+	for _, Connection in next, Library.Connections do
+		Connection:Disconnect()
+	end
+end)
+
+local function MakeDraggable(DragPoint, Main)
+	local IsResizing = false
+	pcall(function()
+		local Dragging, DragInput, MousePos, FramePos = false
+		DragPoint.InputBegan:Connect(function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+				if not IsResizing then
+					Dragging = true
+					MousePos = Input.Position
+					FramePos = Main.Position
+				end
+				Input.Changed:Connect(function()
+					if Input.UserInputState == Enum.UserInputState.End then Dragging = false end
+				end)
+			end
+		end)
+		DragPoint.InputChanged:Connect(function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
+				DragInput = Input
+			end
+		end)
+		UserInputService.InputChanged:Connect(function(Input)
+			if Input == DragInput and Dragging and not IsResizing then
+				local Delta = Input.Position - MousePos
+				TweenService:Create(Main, TweenInfo.new(0.65, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
+					Position = UDim2.new(FramePos.X.Scale, FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)
+				}):Play()
+			end
+		end)
+	end)
+	return function(resizing)
+		IsResizing = resizing
+		if resizing then Dragging = false end
+	end
+end
+
+local function MakeResizable(ResizeButton, Main, MinSize, MaxSize, SetResizingCallback)
+	pcall(function()
+		local Resizing = false
+		local StartSize, StartPos
+		ResizeButton.InputBegan:Connect(function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+				Resizing = true
+				if SetResizingCallback then SetResizingCallback(true) end
+				StartSize = Main.Size
+				StartPos = Vector2.new(Mouse.X, Mouse.Y)
+			end
+		end)
+		ResizeButton.InputEnded:Connect(function(Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+				Resizing = false
+				if SetResizingCallback then SetResizingCallback(false) end
+			end
+		end)
+		UserInputService.InputChanged:Connect(function()
+			if Resizing then
+				local CurrentPos = Vector2.new(Mouse.X, Mouse.Y)
+				local Delta = CurrentPos - StartPos
+				local NewWidth = math.clamp(StartSize.X.Offset + Delta.X, MinSize.X, MaxSize.X)
+				local NewHeight = math.clamp(StartSize.Y.Offset + Delta.Y, MinSize.Y, MaxSize.Y)
+				Main.Size = UDim2.new(0, NewWidth, 0, NewHeight)
+			end
+		end)
+	end)
+end
+
+local function Create(Name, Properties, Children)
+	local Object = Instance.new(Name)
+	for i, v in next, Properties or {} do
+		pcall(function() Object[i] = v end)
+	end
+	for i, v in next, Children or {} do
+		pcall(function() v.Parent = Object end)
+	end
+	return Object
+end
+
+local function CreateElement(ElementName, ElementFunction)
+	Library.Elements[ElementName] = function(...) return ElementFunction(...) end
+end
+
+local function MakeElement(ElementName, ...)
+	return Library.Elements[ElementName](...)
+end
+
+local function SetProps(Element, Props)
+	for Property, Value in pairs(Props or {}) do
+		pcall(function() Element[Property] = Value end)
+	end
+	return Element
+end
+
+local function SetChildren(Element, Children)
+	for _, Child in pairs(Children or {}) do
+		pcall(function() Child.Parent = Element end)
+	end
+	return Element
+end
+
+local function Round(Number, Factor)
+	if not Factor or Factor == 0 then return Number end
+	local Result = math.floor(Number / Factor + (math.sign(Number) * 0.5)) * Factor
+	if Result < 0 then Result = Result + Factor end
+	return Result
+end
+
+local function ReturnProperty(Object)
+	if Object:IsA("Frame") or Object:IsA("TextButton") then return "BackgroundColor3" end
+	if Object:IsA("ScrollingFrame") then return "ScrollBarImageColor3" end
+	if Object:IsA("UIStroke") then return "Color" end
+	if Object:IsA("TextLabel") or Object:IsA("TextBox") then return "TextColor3" end
+	if Object:IsA("ImageLabel") or Object:IsA("ImageButton") then return "ImageColor3" end
+end
+
+local function AddThemeObject(Object, Type)
+	if not Library.ThemeObjects[Type] then Library.ThemeObjects[Type] = {} end
+	table.insert(Library.ThemeObjects[Type], Object)
+	Object[ReturnProperty(Object)] = Library.Themes[Library.SelectedTheme][Type]
+	return Object
+end
+
+local function SetTheme()
+	for Name, Type in pairs(Library.ThemeObjects) do
+		for _, Object in pairs(Type) do
+			Object[ReturnProperty(Object)] = Library.Themes[Library.SelectedTheme][Name]
+		end
+	end
+end
+
+local WhitelistedMouse = {Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2, Enum.UserInputType.MouseButton3, Enum.UserInputType.Touch}
+local BlacklistedKeys = {Enum.KeyCode.Unknown, Enum.KeyCode.W, Enum.KeyCode.A, Enum.KeyCode.S, Enum.KeyCode.D, Enum.KeyCode.Up, Enum.KeyCode.Left, Enum.KeyCode.Down, Enum.KeyCode.Right, Enum.KeyCode.Slash, Enum.KeyCode.Tab, Enum.KeyCode.Backspace, Enum.KeyCode.Escape}
+
+local function CheckKey(Table, Key)
+	for _, v in next, Table do
+		if v == Key then return true end
+	end
+end
+
+CreateElement("Corner", function(Scale, Offset)
+	return Create("UICorner", {CornerRadius = UDim.new(Scale or 0, Offset or 12)})
+end)
+
+CreateElement("Stroke", function(Color, Thickness)
+	return Create("UIStroke", {Color = Color or Color3.fromRGB(255,255,255), Thickness = Thickness or 0.5})
+end)
+
+CreateElement("List", function(Scale, Offset)
+	return Create("UIListLayout", {SortOrder = Enum.SortOrder.LayoutOrder, Padding = UDim.new(Scale or 0, Offset or 0)})
+end)
+
+CreateElement("Padding", function(Bottom, Left, Right, Top)
+	return Create("UIPadding", {
+		PaddingBottom = UDim.new(0, Bottom or 4),
+		PaddingLeft   = UDim.new(0, Left   or 4),
+		PaddingRight  = UDim.new(0, Right  or 4),
+		PaddingTop    = UDim.new(0, Top    or 4)
+	})
+end)
+
+CreateElement("TFrame", function()
+	return Create("Frame", {BackgroundTransparency = 1})
+end)
+
+CreateElement("Frame", function(Color)
+	return Create("Frame", {BackgroundColor3 = Color or Color3.fromRGB(255,255,255), BorderSizePixel = 0})
+end)
+
+CreateElement("RoundFrame", function(Color, Scale, Offset)
+	return Create("Frame", {BackgroundColor3 = Color or Color3.fromRGB(255,255,255), BorderSizePixel = 0}, {
+		Create("UICorner", {CornerRadius = UDim.new(Scale, Offset)})
+	})
+end)
+
+CreateElement("Button", function()
+	local Button = Create("TextButton", {Text = "", AutoButtonColor = false, BackgroundTransparency = 1, BorderSizePixel = 0})
+	Button.MouseButton1Click:Connect(function()
+		local sound = Instance.new("Sound")
+		sound.SoundId = "rbxassetid://6895079853"
+		sound.Volume = 0.5
+		sound.Parent = game:GetService("SoundService")
+		sound:Play()
+		game:GetService("Debris"):AddItem(sound, 1)
+	end)
+	return Button
+end)
+
+CreateElement("ScrollFrame", function(Color, Width)
+	return Create("ScrollingFrame", {
+		BackgroundTransparency = 1,
+		MidImage = "rbxassetid://7445543667",
+		BottomImage = "rbxassetid://7445543667",
+		TopImage = "rbxassetid://7445543667",
+		ScrollBarImageColor3 = Color,
+		BorderSizePixel = 0,
+		ScrollBarThickness = Width,
+		CanvasSize = UDim2.new(0,0,0,0)
+	})
+end)
+
+CreateElement("Image", function(ImageID)
+	local ImageNew = Create("ImageLabel", {Image = ImageID, BackgroundTransparency = 1})
+	if GetIcon(ImageID) ~= nil then ImageNew.Image = GetIcon(ImageID) end
+	return ImageNew
+end)
+
+CreateElement("ImageButton", function(ImageID)
+	return Create("ImageButton", {Image = ImageID, BackgroundTransparency = 1})
+end)
+
+CreateElement("Label", function(Text, TextSize, Transparency)
+	return Create("TextLabel", {
+		Text = Text or "",
+		TextColor3 = Color3.fromRGB(240,240,240),
+		TextTransparency = Transparency or 0,
+		TextSize = TextSize or 16,
+		Font = Enum.Font.GothamBold,
+		RichText = true,
+		BackgroundTransparency = 1,
+		TextXAlignment = Enum.TextXAlignment.Left
+	})
+end)
+
+local NotificationHolder = SetProps(SetChildren(MakeElement("TFrame"), {
+	SetProps(MakeElement("List"), {
+		HorizontalAlignment = Enum.HorizontalAlignment.Center,
+		SortOrder = Enum.SortOrder.LayoutOrder,
+		VerticalAlignment = Enum.VerticalAlignment.Bottom,
+		Padding = UDim.new(0, 5)
+	})
+}), {
+	Position = UDim2.new(1, -25, 1, -25),
+	Size = UDim2.new(0, 300, 1, -25),
+	AnchorPoint = Vector2.new(1, 1),
+	Parent = Container
+})
+
+function Library:MakeNotification(NotificationConfig)
+	spawn(function()
+		NotificationConfig.Name    = NotificationConfig.Name    or "Notification"
+		NotificationConfig.Content = NotificationConfig.Content or "Test"
+		NotificationConfig.Image   = NotificationConfig.Image   or "rbxassetid://4384403532"
+		NotificationConfig.Time    = NotificationConfig.Time    or 15
+
+		local NotificationParent = SetProps(MakeElement("TFrame"), {
+			Size = UDim2.new(1, 0, 0, 0),
+			AutomaticSize = Enum.AutomaticSize.Y,
+			Parent = NotificationHolder
+		})
+
+		local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(25,25,25), 0, 10), {
+			Parent = NotificationParent,
+			Size = UDim2.new(1, 0, 0, 0),
+			Position = UDim2.new(1, 0, 0, 0),
+			BackgroundTransparency = 0.15,
+			AutomaticSize = Enum.AutomaticSize.Y
+		}), {
+			MakeElement("Stroke", Color3.fromRGB(93,93,93), 1.2),
+			MakeElement("Padding", 12, 12, 12, 12),
+			SetProps(MakeElement("Image", NotificationConfig.Image), {
+				Size = UDim2.new(0, 20, 0, 20),
+				ImageColor3 = Color3.fromRGB(240,240,240),
+				Name = "Icon"
+			}),
+			SetProps(MakeElement("Label", NotificationConfig.Name, 15), {
+				Size = UDim2.new(1, -30, 0, 20),
+				Position = UDim2.new(0, 30, 0, 0),
+				Font = Enum.Font.FredokaOne,
+				Name = "Title"
+			}),
+			SetProps(MakeElement("Label", NotificationConfig.Content, 14), {
+				Size = UDim2.new(1, 0, 0, 0),
+				Position = UDim2.new(0, 0, 0, 25),
+				Font = Enum.Font.FredokaOne,
+				Name = "Content",
+				AutomaticSize = Enum.AutomaticSize.Y,
+				TextColor3 = Color3.fromRGB(200,200,200),
+				TextWrapped = true
+			})
+		})
+
+		TweenService:Create(NotificationFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Position = UDim2.new(0,0,0,0)}):Play()
+		wait(NotificationConfig.Time)
+		TweenService:Create(NotificationFrame, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {Position = UDim2.new(1,0,0,0)}):Play()
+		wait(0.8)
+		NotificationParent:Destroy()
+	end)
+end
+
+function Library:MakeWindow(WindowConfig)
+	local FirstTab = true
+	local Minimized = false
+	local Loaded = false
+	local UIHidden = false
+
+	WindowConfig = WindowConfig or {}
+	WindowConfig.Name            = WindowConfig.Name            or "Nova"
+	WindowConfig.HidePremium     = WindowConfig.HidePremium     or false
+	WindowConfig.SaveConfig      = WindowConfig.SaveConfig      or false
+	WindowConfig.ConfigFile      = WindowConfig.ConfigFile      or WindowConfig.Name .. ".json"
+	if WindowConfig.IntroEnabled == nil then WindowConfig.IntroEnabled = true end
+	WindowConfig.IntroToggleIcon = WindowConfig.IntroToggleIcon or "rbxassetid://123912257208121"
+	WindowConfig.IntroText       = WindowConfig.IntroText       or "Launching Nova..."
+	WindowConfig.CloseCallback   = WindowConfig.CloseCallback   or function() end
+	WindowConfig.ShowIcon        = WindowConfig.ShowIcon        or false
+	WindowConfig.Icon            = WindowConfig.Icon            or "rbxassetid://123912257208121"
+	WindowConfig.IntroIcon       = WindowConfig.IntroIcon       or "rbxassetid://123912257208121"
+
+	Library.ConfigFile = WindowConfig.ConfigFile
+
+	if WindowConfig.SaveConfig then
+		Library:LoadConfig()
+	end
+
+	local TabHolder = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255,255,255), 4), {
+		Size = UDim2.new(1, 0, 1, -50)
+	}), {
+		MakeElement("List"),
+		MakeElement("Padding", 8, 0, 0, 8)
+	}), "Divider")
+
+	AddConnection(TabHolder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+		TabHolder.CanvasSize = UDim2.new(0, 0, 0, TabHolder.UIListLayout.AbsoluteContentSize.Y + 16)
+	end)
+
+	local CloseBtn = SetChildren(SetProps(MakeElement("Button"), {
+		Size = UDim2.new(0.333, 0, 1, 0),
+		Position = UDim2.new(0.667, 0, 0, 0),
+		BackgroundTransparency = 1
+	}), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072725342"), {
+			Position = UDim2.new(0, 9, 0, 6),
+			Size = UDim2.new(0, 18, 0, 18)
+		}), "Text")
+	})
+
+	local MinimizeBtn = SetChildren(SetProps(MakeElement("Button"), {
+		Size = UDim2.new(0.333, 0, 1, 0),
+		Position = UDim2.new(0, 0, 0, 0),
+		BackgroundTransparency = 1
+	}), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072719338"), {
+			Position = UDim2.new(0, 9, 0, 6),
+			Size = UDim2.new(0, 18, 0, 18),
+			Name = "Ico"
+		}), "Text")
+	})
+
+	-- Theme Dropdown Button (arrow down icon, middle button)
+	local ThemeDropdownOpen = false
+	local ThemeDropdownFrame = nil
+
+	local ThemeBtn = SetChildren(SetProps(MakeElement("Button"), {
+		Size = UDim2.new(0.334, 0, 1, 0),
+		Position = UDim2.new(0.333, 0, 0, 0),
+		BackgroundTransparency = 1
+	}), {
+		AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072706796"), {
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 0, 0.5, 0),
+			Size = UDim2.new(0, 16, 0, 16),
+			Name = "Ico"
+		}), "Text")
+	})
+
+	local DragPoint = SetProps(MakeElement("TFrame"), {Size = UDim2.new(1, 0, 0, 50)})
+
+	local WindowStuff = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 10), {
+		Size = UDim2.new(0, 150, 1, -50),
+		Position = UDim2.new(0, 0, 0, 50),
+		BackgroundTransparency = 0.15
+	}), {
+		AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(1,0,0,10), Position = UDim2.new(0,0,0,0), BackgroundTransparency = 0.15}), "Second"),
+		AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(0,10,1,0), Position = UDim2.new(1,-10,0,0), BackgroundTransparency = 0.15}), "Second"),
+		AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(0,1,1,0), Position = UDim2.new(1,-1,0,0)}), "Stroke"),
+		TabHolder,
+			SetChildren(SetProps(MakeElement("TFrame"), {Size = UDim2.new(1,0,0,64), Position = UDim2.new(0,0,1,-64)}), {
+				AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(1,0,0,1)}), "Stroke"),
+				-- Avatar container (bigger to avoid overlap)
+				SetChildren(SetProps(MakeElement("Frame"), {
+					AnchorPoint = Vector2.new(0,0.5),
+					Size = UDim2.new(0,56,0,56),
+					Position = UDim2.new(0,10,0.5,0),
+					BackgroundTransparency = 1,
+				}), {
+					SetProps(MakeElement("Image", "https://www.roblox.com/headshot-thumbnail/image?userId="..(LocalPlayer and LocalPlayer.UserId or 0).."&width=420&height=420&format=png"), {Size = UDim2.new(1,0,1,0), ScaleType = Enum.ScaleType.Crop, BackgroundTransparency = 1, Name = "Avatar"}),
+					MakeElement("Corner", 1)
+				}, "Divider"),
+				-- Title and subtitle moved right of avatar with more space
+				AddThemeObject(SetProps(MakeElement("Label", WindowConfig.Name, WindowConfig.HidePremium and 16 or 15), {
+					Size = UDim2.new(1,-96,0,24),
+					Position = WindowConfig.HidePremium and UDim2.new(0,76,0,10) or UDim2.new(0,76,0,6),
+					Font = Enum.Font.GothamBold,
+					TextSize = 18,
+					TextXAlignment = Enum.TextXAlignment.Left,
+					TextTruncate = Enum.TextTruncate.AtEnd,
+					ClipsDescendants = false
+				}), "Text"),
+				SetProps(MakeElement("Label", "", 14), {
+					Size = UDim2.new(1,-96,0,18),
+					Position = UDim2.new(0,76,0,32),
+					Visible = not WindowConfig.HidePremium,
+					TextColor3 = Color3.fromRGB(150,150,165),
+					Font = Enum.Font.Gotham,
+					TextSize = 14,
+					TextXAlignment = Enum.TextXAlignment.Left,
+					TextTruncate = Enum.TextTruncate.AtEnd
+				})
+			}),
+	}), "Second")
+
+	local WindowName = AddThemeObject(SetProps(MakeElement("Label", WindowConfig.Name, 14), {
+		Size = UDim2.new(1,-30,2,0),
+		Position = UDim2.new(0,25,0,-24),
+		Font = Enum.Font.GothamBlack,
+		TextSize = 24
+	}), "Text")
+
+	local WindowTopBarLine = AddThemeObject(SetProps(MakeElement("Frame"), {
+		Size = UDim2.new(1,0,0,1),
+		Position = UDim2.new(0,0,1,-1)
+	}), "Stroke")
+
+	-- TopBar button container: now 3 buttons wide
+	local TopBarButtonContainer = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 7), {
+		Size = UDim2.new(0, 105, 0, 30),
+		Position = UDim2.new(1, -120, 0, 10),
+		BackgroundTransparency = 0.15
+	}), {
+		AddThemeObject(MakeElement("Stroke"), "Stroke"),
+		-- divider between minimize and theme
+		AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(0,1,1,0), Position = UDim2.new(0.333,0,0,0)}), "Stroke"),
+		-- divider between theme and close
+		AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(0,1,1,0), Position = UDim2.new(0.667,0,0,0)}), "Stroke"),
+		MinimizeBtn,
+		ThemeBtn,
+		CloseBtn
+	}), "Second")
+
+	local MainWindow = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 10), {
+		Parent = Container,
+		Position = UDim2.new(0.5,-307,0.5,-172),
+		Size = UDim2.new(0,615,0,344),
+		ClipsDescendants = true,
+		BackgroundTransparency = 0
+	}), {
+		SetChildren(SetProps(MakeElement("TFrame"), {Size = UDim2.new(1,0,0,50), Name = "TopBar"}), {
+			WindowName,
+			WindowTopBarLine,
+			TopBarButtonContainer,
+		}),
+		DragPoint,
+		WindowStuff
+	}), "Main")
+
+	-- Theme dropdown popup (parented to Container so it floats above everything)
+	local ThemeNames = {"Black", "White", "Gray", "Blue", "Purple", "Red"}
+	local ThemeDisplayNames = {"Black", "White", "Gray", "Blue", "Purple", "Red"}
+
+	local ThemePopup = Create("Frame", {
+		BackgroundColor3 = Library.Themes[Library.SelectedTheme].Second,
+		BackgroundTransparency = 0,
+		BorderSizePixel = 0,
+		Size = UDim2.new(0, 120, 0, #ThemeNames * 28 + 8),
+		Visible = false,
+		ZIndex = 50,
+		Parent = Container,
+	})
+	Create("UICorner", {CornerRadius = UDim.new(0, 8), Parent = ThemePopup})
+	Create("UIStroke", {Color = Library.Themes[Library.SelectedTheme].Stroke, Thickness = 1, Parent = ThemePopup})
+	local ThemePopupList = Create("UIListLayout", {
+		SortOrder = Enum.SortOrder.LayoutOrder,
+		Padding = UDim.new(0, 2),
+		Parent = ThemePopup
+	})
+	Create("UIPadding", {
+		PaddingTop = UDim.new(0,4), PaddingBottom = UDim.new(0,4),
+		PaddingLeft = UDim.new(0,4), PaddingRight = UDim.new(0,4),
+		Parent = ThemePopup
+	})
+
+	local ThemeButtonRefs = {}
+	for i, tName in ipairs(ThemeNames) do
+		local displayName = ThemeDisplayNames[i]
+		local optBtn = Create("TextButton", {
+			Size = UDim2.new(1, 0, 0, 26),
+			BackgroundTransparency = (Library.SelectedTheme == tName) and 0.5 or 1,
+			BackgroundColor3 = Library.Themes[Library.SelectedTheme].Stroke,
+			BorderSizePixel = 0,
+			Text = displayName,
+			TextColor3 = Library.Themes[Library.SelectedTheme].Text,
+			TextSize = 14,
+			Font = Enum.Font.FredokaOne,
+			ZIndex = 51,
+			Parent = ThemePopup,
+		})
+		Create("UICorner", {CornerRadius = UDim.new(0, 5), Parent = optBtn})
+		ThemeButtonRefs[tName] = optBtn
+
+		optBtn.MouseEnter:Connect(function()
+			if Library.SelectedTheme ~= tName then
+				TweenService:Create(optBtn, TweenInfo.new(0.15), {BackgroundTransparency = 0.7}):Play()
+			end
+		end)
+		optBtn.MouseLeave:Connect(function()
+			if Library.SelectedTheme ~= tName then
+				TweenService:Create(optBtn, TweenInfo.new(0.15), {BackgroundTransparency = 1}):Play()
+			end
+		end)
+		optBtn.MouseButton1Click:Connect(function()
+			-- play click sound
+			local sound = Instance.new("Sound")
+			sound.SoundId = "rbxassetid://6895079853"
+			sound.Volume = 0.5
+			sound.Parent = game:GetService("SoundService")
+			sound:Play()
+			game:GetService("Debris"):AddItem(sound, 1)
+
+			Library.SelectedTheme = tName
+			SetTheme()
+
+			-- Update popup styling
+			ThemePopup.BackgroundColor3 = Library.Themes[tName].Second
+			local popupStroke = ThemePopup:FindFirstChildOfClass("UIStroke")
+			if popupStroke then popupStroke.Color = Library.Themes[tName].Stroke end
+
+			for k, btn in pairs(ThemeButtonRefs) do
+				btn.TextColor3 = Library.Themes[tName].Text
+				btn.BackgroundColor3 = Library.Themes[tName].Stroke
+				TweenService:Create(btn, TweenInfo.new(0.15), {
+					BackgroundTransparency = (k == tName) and 0.5 or 1
+				}):Play()
+			end
+
+			-- Auto-save theme
+			if WindowConfig.SaveConfig and Library.ConfigFile then
+				Library.UserConfig.__theme = tName
+				Library:SaveConfig()
+			end
+
+			-- Close popup
+			ThemeDropdownOpen = false
+			TweenService:Create(ThemePopup, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				BackgroundTransparency = 1
+			}):Play()
+			wait(0.15)
+			ThemePopup.Visible = false
+			ThemePopup.BackgroundTransparency = 0.05
+
+			Library:MakeNotification({
+				Name = "Theme geändert",
+				Content = "Theme wurde auf " .. displayName .. " gesetzt.",
+				Time = 3
+			})
+		end)
+	end
+
+	local function RepositionThemePopup()
+		local btnPos = TopBarButtonContainer.AbsolutePosition
+		local btnSize = TopBarButtonContainer.AbsoluteSize
+		ThemePopup.Position = UDim2.new(0, btnPos.X + btnSize.X - 120, 0, btnPos.Y + btnSize.Y + 4)
+	end
+
+	AddConnection(ThemeBtn.MouseButton1Click, function()
+		ThemeDropdownOpen = not ThemeDropdownOpen
+		if ThemeDropdownOpen then
+			RepositionThemePopup()
+			ThemePopup.Visible = true
+			ThemePopup.BackgroundTransparency = 1
+			TweenService:Create(ThemePopup, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				BackgroundTransparency = 0.05
+			}):Play()
+			TweenService:Create(ThemeBtn.Ico, TweenInfo.new(0.2), {Rotation = 180}):Play()
+		else
+			TweenService:Create(ThemePopup, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				BackgroundTransparency = 1
+			}):Play()
+			TweenService:Create(ThemeBtn.Ico, TweenInfo.new(0.2), {Rotation = 0}):Play()
+			wait(0.15)
+			ThemePopup.Visible = false
+			ThemePopup.BackgroundTransparency = 0.05
+		end
+	end)
+
+	-- Close popup when clicking elsewhere
+	AddConnection(UserInputService.InputBegan, function(Input)
+		if Input.UserInputType == Enum.UserInputType.MouseButton1 and ThemeDropdownOpen then
+			local mx, my = Mouse.X, Mouse.Y
+			local pp = ThemePopup.AbsolutePosition
+			local ps = ThemePopup.AbsoluteSize
+			local insidePopup = mx >= pp.X and mx <= pp.X+ps.X and my >= pp.Y and my <= pp.Y+ps.Y
+			local bp = TopBarButtonContainer.AbsolutePosition
+			local bs = TopBarButtonContainer.AbsoluteSize
+			local insideBtn = mx >= bp.X and mx <= bp.X+bs.X and my >= bp.Y and my <= bp.Y+bs.Y
+			if not insidePopup and not insideBtn then
+				ThemeDropdownOpen = false
+				TweenService:Create(ThemePopup, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+				TweenService:Create(ThemeBtn.Ico, TweenInfo.new(0.2), {Rotation = 0}):Play()
+				task.delay(0.15, function()
+					ThemePopup.Visible = false
+					ThemePopup.BackgroundTransparency = 0.05
+				end)
+			end
+		end
+	end)
+
+	local SetResizingCallback = MakeDraggable(DragPoint, MainWindow)
+
+	local MobileReopenButton = SetChildren(SetProps(MakeElement("Button"), {
+		Parent = Container,
+		Size = UDim2.new(0,40,0,40),
+		Position = UDim2.new(0.5,-20,0,20),
+		BackgroundTransparency = 0.2,
+		BackgroundColor3 = Library.Themes[Library.SelectedTheme].Main,
+		Visible = false
+	}), {
+		AddThemeObject(SetProps(MakeElement("Image", WindowConfig.IntroToggleIcon or "http://www.roblox.com/asset/?id=8834748103"), {
+			AnchorPoint = Vector2.new(0.5,0.5),
+			Position = UDim2.new(0.5,0,0.5,0),
+			Size = UDim2.new(0.7,0,0.7,0),
+		}), "Text"),
+		MakeElement("Corner", 1)
+	})
+
+	AddConnection(CloseBtn.MouseButton1Up, function()
+		MainWindow.Visible = false
+		ThemePopup.Visible = false
+		ThemeDropdownOpen = false
+		if UserInputService.TouchEnabled then MobileReopenButton.Visible = true end
+		UIHidden = true
+		Library:MakeNotification({
+			Name = "Interface Hidden",
+			Content = UserInputService.TouchEnabled and "Tap the button or Left Control to reopen the interface" or "Press Left Control to reopen the interface",
+			Time = 5
+		})
+		WindowConfig.CloseCallback()
+	end)
+
+	AddConnection(UserInputService.InputBegan, function(Input)
+		if Input.KeyCode == Enum.KeyCode.LeftControl and UIHidden == true then
+			MainWindow.Visible = true
+			MobileReopenButton.Visible = false
+		end
+	end)
+
+	AddConnection(MobileReopenButton.Activated, function()
+		MainWindow.Visible = true
+		MobileReopenButton.Visible = false
+	end)
+
+	AddConnection(MinimizeBtn.MouseButton1Up, function()
+		if Minimized then
+			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0,615,0,344)}):Play()
+			MinimizeBtn.Ico.Image = "rbxassetid://7072719338"
+			wait(.02)
+			MainWindow.ClipsDescendants = false
+			WindowStuff.Visible = true
+			WindowTopBarLine.Visible = true
+		else
+			MainWindow.ClipsDescendants = true
+			WindowTopBarLine.Visible = false
+			MinimizeBtn.Ico.Image = "rbxassetid://7072720870"
+			TweenService:Create(MainWindow, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, WindowName.TextBounds.X + 175, 0, 50)}):Play()
+			wait(0.1)
+			WindowStuff.Visible = false
+		end
+		Minimized = not Minimized
+	end)
+
+	local function LoadSequence()
+		MainWindow.Visible = false
+
+		local LoadSequenceLogo = SetProps(MakeElement("Image", WindowConfig.IntroIcon), {
+			Parent = Container,
+			AnchorPoint = Vector2.new(0.5,0.5),
+			Position = UDim2.new(0.5,0,0.4,0),
+			Size = UDim2.new(0,28,0,28),
+			ImageColor3 = Color3.fromRGB(255,255,255),
+			ImageTransparency = 1
+		})
+
+		local LoadSequenceText = SetProps(MakeElement("Label", WindowConfig.IntroText, 14), {
+			Parent = Container,
+			Size = UDim2.new(1,0,1,0),
+			AnchorPoint = Vector2.new(0.5,0.5),
+			Position = UDim2.new(0.5,19,0.5,0),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			Font = Enum.Font.GothamBold,
+			TextTransparency = 1
+		})
+
+		local LoadingBarBackground = Instance.new("Frame")
+		LoadingBarBackground.Size = UDim2.new(0, 200, 0, 4)
+		LoadingBarBackground.Position = UDim2.new(0.5, -100, 0.55, 0)
+		LoadingBarBackground.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+		LoadingBarBackground.BorderSizePixel = 0
+		LoadingBarBackground.Parent = Container
+		LoadingBarBackground.BackgroundTransparency = 1
+		Instance.new("UICorner", LoadingBarBackground).CornerRadius = UDim.new(0, 2)
+
+		local LoadingBarFill = Instance.new("Frame")
+		LoadingBarFill.Size = UDim2.new(0, 0, 1, 0)
+		LoadingBarFill.Position = UDim2.new(0, 0, 0, 0)
+		LoadingBarFill.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		LoadingBarFill.BorderSizePixel = 0
+		LoadingBarFill.Parent = LoadingBarBackground
+		Instance.new("UICorner", LoadingBarFill).CornerRadius = UDim.new(0, 2)
+
+		local PercentageText = SetProps(MakeElement("Label", "0%", 14), {
+			Parent = Container,
+			Size = UDim2.new(0, 50, 0, 20),
+			AnchorPoint = Vector2.new(0.5, 0),
+			Position = UDim2.new(0.5, 0, 0.57, 0),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			Font = Enum.Font.GothamBold,
+			TextTransparency = 1
+		})
+
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0.5,0,0.5,0)}):Play()
+		wait(0.8)
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -(LoadSequenceText.TextBounds.X/2), 0.5, 0)}):Play()
+		wait(0.3)
+		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+		TweenService:Create(LoadingBarBackground, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+		TweenService:Create(PercentageText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
+		wait(0.5)
+
+		local function UpdateLoading(percentage)
+			TweenService:Create(LoadingBarFill, TweenInfo.new(0.05, Enum.EasingStyle.Linear), {Size = UDim2.new(percentage/100, 0, 1, 0)}):Play()
+			PercentageText.Text = percentage .. "%"
+		end
+
+		for i = 0, 100 do
+			UpdateLoading(i)
+			wait(0.03)
+		end
+
+		wait(0.3)
+
+		TweenService:Create(LoadSequenceText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+		TweenService:Create(LoadSequenceLogo, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
+		TweenService:Create(LoadingBarBackground, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+		TweenService:Create(PercentageText, TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
+		wait(0.3)
+
+		MainWindow.Visible = true
+		LoadSequenceLogo:Destroy()
+		LoadSequenceText:Destroy()
+		LoadingBarBackground:Destroy()
+		PercentageText:Destroy()
+	end
+
+	if WindowConfig.IntroEnabled then LoadSequence() end
+
+	local function BuildTab(TabConfig, ParentHolder)
+		TabConfig = TabConfig or {}
+		TabConfig.Name        = TabConfig.Name        or "Tab"
+		TabConfig.Icon        = TabConfig.Icon        or ""
+		TabConfig.PremiumOnly = TabConfig.PremiumOnly or false
+
+		local TabFrame = SetChildren(SetProps(MakeElement("Button"), {
+			Size = UDim2.new(1, 0, 0, 30),
+			Parent = ParentHolder
+		}), {
+			AddThemeObject(SetProps(MakeElement("Image", TabConfig.Icon), {
+				AnchorPoint = Vector2.new(0, 0.5),
+				Size = UDim2.new(0,18,0,18),
+				Position = UDim2.new(0,10,0.5,0),
+				ImageTransparency = 0.4,
+				Name = "Ico"
+			}), "Text"),
+			AddThemeObject(SetProps(MakeElement("Label", TabConfig.Name, 16), {
+				Size = UDim2.new(1,-35,1,0),
+				Position = UDim2.new(0,35,0,0),
+				Font = Enum.Font.GothamBlack,
+				TextTransparency = 0.4,
+				Name = "Title"
+			}), "Text")
+		})
+
+		if GetIcon(TabConfig.Icon) ~= nil then TabFrame.Ico.Image = GetIcon(TabConfig.Icon) end
+
+		local TabItemContainer = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255,255,255), 5), {
+			Size = UDim2.new(1,-150,1,-50),
+			Position = UDim2.new(0,150,0,50),
+			Parent = MainWindow,
+			Visible = false,
+			Name = "ItemContainer"
+		}), {
+			MakeElement("List", 0, 6),
+			MakeElement("Padding", 15, 10, 10, 15)
+		}), "Divider")
+
+		AddConnection(TabItemContainer.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+			TabItemContainer.CanvasSize = UDim2.new(0, 0, 0, TabItemContainer.UIListLayout.AbsoluteContentSize.Y + 30)
+		end)
+
+		if FirstTab then
+			FirstTab = false
+			TabFrame.Ico.ImageTransparency = 0
+			TabFrame.Title.TextTransparency = 0
+			TabFrame.Title.Font = Enum.Font.GothamBlack
+			TabFrame.Ico.ImageColor3 = Color3.fromRGB(255, 255, 255)
+			TabFrame.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TabItemContainer.Visible = true
+		end
+
+		AddConnection(TabFrame.MouseButton1Click, function()
+			local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+			for _, Tab in next, TabHolder:GetChildren() do
+				if Tab:IsA("TextButton") and Tab:FindFirstChild("Ico") and Tab:FindFirstChild("Title") then
+					Tab.Title.Font = Enum.Font.GothamBlack
+					TweenService:Create(Tab.Ico,   TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0.4, ImageColor3 = Color3.fromRGB(240,240,240)}):Play()
+					TweenService:Create(Tab.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency  = 0.4, TextColor3  = Color3.fromRGB(240,240,240)}):Play()
+				end
+			end
+			for _, ItemContainer in next, MainWindow:GetChildren() do
+				if ItemContainer.Name == "ItemContainer" then ItemContainer.Visible = false end
+			end
+			TweenService:Create(TabFrame.Ico,   TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0, ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+			TweenService:Create(TabFrame.Title, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {TextTransparency  = 0, TextColor3  = Color3.fromRGB(255, 255, 255)}):Play()
+			TabFrame.Title.Font = Enum.Font.GothamBlack
+			TabItemContainer.Visible = true
+		end)
+
+		local function GetElements(ItemParent)
+			local ElementFunction = {}
+
+			function ElementFunction:AddLabel(Text)
+				local LabelFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,-16,0,30),
+					Position = UDim2.new(0,8,0,0),
+					BackgroundTransparency = 0.2,
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
+						Size = UDim2.new(1,-12,1,0),
+						Position = UDim2.new(0,12,0,0),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Second")
+				local LabelFunction = {}
+				function LabelFunction:Set(ToChange)
+					if LabelFrame:FindFirstChild("Content") then LabelFrame.Content.Text = ToChange end
+				end
+				return LabelFunction
+			end
+
+			function ElementFunction:AddParagraph(Text, Content)
+				Text    = Text    or "Text"
+				Content = Content or "Content"
+				local ParagraphFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(150, 150, 165), 0, 5), {
+					Size = UDim2.new(1,-16,0,30),
+					Position = UDim2.new(0,8,0,0),
+					BackgroundTransparency = 0.2,
+					Parent = ItemParent
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", Text, 15), {
+						Size = UDim2.new(1,-24,0,14),
+						Position = UDim2.new(0,12,0,11),
+						Font = Enum.Font.FredokaOne,
+						Name = "Title"
+					}), "Text"),
+					AddThemeObject(SetProps(MakeElement("Label", "", 13), {
+						Size = UDim2.new(1,-28,0,0),
+						Position = UDim2.new(0,12,0,30),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content",
+						TextWrapped = true
+					}), "TextDark"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke")
+				}), "Second")
+				AddConnection(ParagraphFrame.Content:GetPropertyChangedSignal("Text"), function()
+					ParagraphFrame.Content.Size = UDim2.new(1,-28,0,ParagraphFrame.Content.TextBounds.Y)
+					ParagraphFrame.Size = UDim2.new(1,0,0,ParagraphFrame.Content.TextBounds.Y + 46)
+				end)
+				ParagraphFrame.Content.Text = Content
+				local ParagraphFunction = {}
+				function ParagraphFunction:Set(ToChange) ParagraphFrame.Content.Text = ToChange end
+				return ParagraphFunction
+			end
+
+			function ElementFunction:AddButton(ButtonConfig)
+				ButtonConfig = ButtonConfig or {}
+				ButtonConfig.Name     = ButtonConfig.Name     or "Button"
+				ButtonConfig.Callback = ButtonConfig.Callback or function() end
+				ButtonConfig.Icon     = ButtonConfig.Icon     or "rbxassetid://3944703587"
+				local Button = {}
+				local Click = SetProps(MakeElement("Button"), {Size = UDim2.new(1,0,1,0)})
+				local ButtonFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,0,0,33),
+					Parent = ItemParent,
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", ButtonConfig.Name, 15), {
+						Size = UDim2.new(1,-12,1,0),
+						Position = UDim2.new(0,12,0,0),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(SetProps(MakeElement("Image", ButtonConfig.Icon), {
+						Size = UDim2.new(0,20,0,20),
+						Position = UDim2.new(1,-30,0,7),
+					}), "TextDark"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					Click
+				}), "Second")
+				AddConnection(Click.MouseEnter,      function() TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play() end)
+				AddConnection(Click.MouseLeave,      function() TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Library.Themes[Library.SelectedTheme].Second}):Play() end)
+				AddConnection(Click.MouseButton1Up,  function()
+					local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+					TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play()
+					spawn(function() ButtonConfig.Callback() end)
+				end)
+				AddConnection(Click.MouseButton1Down, function() TweenService:Create(ButtonFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+6, Library.Themes[Library.SelectedTheme].Second.G*255+6, Library.Themes[Library.SelectedTheme].Second.B*255+6)}):Play() end)
+				function Button:Set(ButtonText) ButtonFrame.Content.Text = ButtonText end
+				return Button
+			end
+
+			function ElementFunction:AddToggle(ToggleConfig)
+				ToggleConfig = ToggleConfig or {}
+				ToggleConfig.Name     = ToggleConfig.Name     or "Toggle"
+				ToggleConfig.Default  = ToggleConfig.Default  or false
+				ToggleConfig.Callback = ToggleConfig.Callback or function() end
+				ToggleConfig.Color    = ToggleConfig.Color    or Color3.fromRGB(150, 150, 165)
+				ToggleConfig.Flag     = ToggleConfig.Flag     or nil
+				ToggleConfig.Save     = ToggleConfig.Save     or false
+
+				local Toggle = {Value = ToggleConfig.Default, Save = ToggleConfig.Save, Type = "Toggle"}
+				local Click = SetProps(MakeElement("Button"), {Size = UDim2.new(1,0,1,0)})
+				local ToggleBox = SetChildren(SetProps(MakeElement("RoundFrame", ToggleConfig.Color, 0, 4), {
+					Size = UDim2.new(0,24,0,24),
+					Position = UDim2.new(1,-24,0.5,0),
+					AnchorPoint = Vector2.new(0.5,0.5),
+					BackgroundTransparency = 0.2
+				}), {
+					SetProps(MakeElement("Stroke"), {Color = ToggleConfig.Color, Name = "Stroke", Transparency = 0.7, Thickness = 1}),
+					SetProps(MakeElement("Image", "rbxassetid://3944680095"), {
+						Size = UDim2.new(0,20,0,20),
+						AnchorPoint = Vector2.new(0.5,0.5),
+						Position = UDim2.new(0.5,0,0.5,0),
+						ImageColor3 = Color3.fromRGB(255,255,255),
+						Name = "Ico"
+					}),
+				})
+				local ToggleFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,0,0,38),
+					Parent = ItemParent,
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", ToggleConfig.Name, 15), {
+						Size = UDim2.new(1,-12,1,0),
+						Position = UDim2.new(0,12,0,0),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					ToggleBox,
+					Click
+				}), "Second")
+
+				function Toggle:Set(Value)
+					Toggle.Value = Value
+					TweenService:Create(ToggleBox,        TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Toggle.Value and ToggleConfig.Color or Library.Themes.Default.Divider}):Play()
+					TweenService:Create(ToggleBox.Stroke, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color            = Toggle.Value and ToggleConfig.Color or Library.Themes.Default.Stroke}):Play()
+					TweenService:Create(ToggleBox.Ico,    TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = Toggle.Value and 0 or 1, Size = Toggle.Value and UDim2.new(0,20,0,20) or UDim2.new(0,8,0,8)}):Play()
+					ToggleConfig.Callback(Toggle.Value)
+					if Toggle.Save and Library.ConfigFile then
+						Library.UserConfig[ToggleConfig.Flag or ToggleConfig.Name] = Value
+						Library:SaveConfig()
+					end
+				end
+
+				if Toggle.Save and Library.ConfigFile and Library.UserConfig[ToggleConfig.Flag or ToggleConfig.Name] ~= nil then
+					Toggle:Set(Library.UserConfig[ToggleConfig.Flag or ToggleConfig.Name])
+				else
+					Toggle:Set(Toggle.Value)
+				end
+
+				AddConnection(Click.MouseEnter,       function() TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play() end)
+				AddConnection(Click.MouseLeave,       function() TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Library.Themes[Library.SelectedTheme].Second}):Play() end)
+				AddConnection(Click.MouseButton1Up,   function()
+					local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play()
+					Toggle:Set(not Toggle.Value)
+				end)
+				AddConnection(Click.MouseButton1Down, function() TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+6, Library.Themes[Library.SelectedTheme].Second.G*255+6, Library.Themes[Library.SelectedTheme].Second.B*255+6)}):Play() end)
+
+				if ToggleConfig.Flag then Library.Flags[ToggleConfig.Flag] = Toggle end
+				return Toggle
+			end
+
+			function ElementFunction:AddSlider(SliderConfig)
+				SliderConfig = SliderConfig or {}
+				SliderConfig.Name      = SliderConfig.Name      or "Slider"
+				SliderConfig.Min       = SliderConfig.Min       or 0
+				SliderConfig.Max       = SliderConfig.Max       or 100
+				SliderConfig.Increment = SliderConfig.Increment or 1
+				SliderConfig.Default   = SliderConfig.Default   or 50
+				SliderConfig.Callback  = SliderConfig.Callback  or function() end
+				SliderConfig.ValueName = SliderConfig.ValueName or ""
+				SliderConfig.Color     = SliderConfig.Color     or Color3.fromRGB(150, 150, 165)
+				SliderConfig.Flag      = SliderConfig.Flag      or nil
+				SliderConfig.Save      = SliderConfig.Save      or false
+
+				local Slider = {Value = SliderConfig.Default, Save = SliderConfig.Save, Type = "Slider"}
+				local Dragging = false
+
+				local SliderDrag = SetChildren(SetProps(MakeElement("RoundFrame", SliderConfig.Color, 0, 5), {
+					Size = UDim2.new(0,0,1,0),
+					BackgroundTransparency = 0.3,
+					ClipsDescendants = true
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", "value", 13), {
+						Size = UDim2.new(1,-12,0,14),
+						Position = UDim2.new(0,12,0,6),
+						Font = Enum.Font.FredokaOne,
+						Name = "Value",
+						TextTransparency = 0
+					}), "Text")
+				})
+
+				local SliderBar = SetChildren(SetProps(MakeElement("RoundFrame", SliderConfig.Color, 0, 5), {
+					Size = UDim2.new(1,-24,0,26),
+					Position = UDim2.new(0,12,0,30),
+					BackgroundTransparency = 0.9
+				}), {
+					SetProps(MakeElement("Stroke"), {Color = SliderConfig.Color}),
+					AddThemeObject(SetProps(MakeElement("Label", "value", 13), {
+						Size = UDim2.new(1,-12,0,14),
+						Position = UDim2.new(0,12,0,6),
+						Font = Enum.Font.FredokaOne,
+						Name = "Value",
+						TextTransparency = 0.8
+					}), "Text"),
+					SliderDrag
+				})
+
+				local SliderFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 4), {
+					Size = UDim2.new(1,0,0,65),
+					Parent = ItemParent,
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", SliderConfig.Name, 15), {
+						Size = UDim2.new(1,-12,0,14),
+						Position = UDim2.new(0,12,0,10),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					SliderBar
+				}), "Second")
+
+				SliderBar.InputBegan:Connect(function(Input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						Dragging = true
+						local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+					end
+				end)
+				SliderBar.InputEnded:Connect(function(Input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						Dragging = false
+					end
+				end)
+				UserInputService.InputChanged:Connect(function(Input)
+					if Dragging then
+						local SizeScale = math.clamp((Mouse.X - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
+						Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale))
+					end
+				end)
+
+				function Slider:Set(Value)
+					local inc = SliderConfig.Increment
+					if type(inc) ~= "number" or inc <= 0 then inc = 1 end
+					self.Value = math.clamp(Round(Value, inc), SliderConfig.Min, SliderConfig.Max)
+					TweenService:Create(SliderDrag, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.fromScale((self.Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1)}):Play()
+					SliderBar.Value.Text   = tostring(self.Value).." "..SliderConfig.ValueName
+					SliderDrag.Value.Text  = tostring(self.Value).." "..SliderConfig.ValueName
+					SliderConfig.Callback(self.Value)
+					if Slider.Save and Library.ConfigFile then
+						Library.UserConfig[SliderConfig.Flag or SliderConfig.Name] = self.Value
+						Library:SaveConfig()
+					end
+				end
+
+				if Slider.Save and Library.ConfigFile and Library.UserConfig[SliderConfig.Flag or SliderConfig.Name] ~= nil then
+					Slider:Set(Library.UserConfig[SliderConfig.Flag or SliderConfig.Name])
+				else
+					Slider:Set(Slider.Value)
+				end
+
+				if SliderConfig.Flag then Library.Flags[SliderConfig.Flag] = Slider end
+				return Slider
+			end
+
+			function ElementFunction:AddDropdown(DropdownConfig)
+				DropdownConfig = DropdownConfig or {}
+				DropdownConfig.Name     = DropdownConfig.Name     or "Dropdown"
+				DropdownConfig.Options  = DropdownConfig.Options  or {}
+				DropdownConfig.Default  = DropdownConfig.Default  or ""
+				DropdownConfig.Callback = DropdownConfig.Callback or function() end
+				DropdownConfig.Flag     = DropdownConfig.Flag     or nil
+				DropdownConfig.Save     = DropdownConfig.Save     or false
+
+				local Dropdown = {Value = DropdownConfig.Default, Options = DropdownConfig.Options, Buttons = {}, Toggled = false, Type = "Dropdown", Save = DropdownConfig.Save}
+				local MaxElements = 5
+
+				if not table.find(Dropdown.Options, Dropdown.Value) then Dropdown.Value = "..." end
+
+				local DropdownList = MakeElement("List")
+				local DropdownContainer = AddThemeObject(SetProps(SetChildren(MakeElement("ScrollFrame", Color3.fromRGB(255,255,255), 4), {DropdownList}), {
+					Parent = ItemParent,
+					Position = UDim2.new(0,0,0,38),
+					Size = UDim2.new(1,0,1,-38),
+					ClipsDescendants = true
+				}), "Divider")
+
+				local Click = SetProps(MakeElement("Button"), {Size = UDim2.new(1,0,1,0)})
+				local DropdownFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,0,0,38),
+					Parent = ItemParent,
+					ClipsDescendants = true,
+					BackgroundTransparency = 0.2
+				}), {
+					DropdownContainer,
+					SetProps(SetChildren(MakeElement("TFrame"), {
+						AddThemeObject(SetProps(MakeElement("Label", DropdownConfig.Name, 15), {Size = UDim2.new(1,-12,1,0), Position = UDim2.new(0,12,0,0), Font = Enum.Font.FredokaOne, Name = "Content"}), "Text"),
+						AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://7072706796"), {Size = UDim2.new(0,20,0,20), AnchorPoint = Vector2.new(0,0.5), Position = UDim2.new(1,-30,0.5,0), ImageColor3 = Color3.fromRGB(240,240,240), Name = "Ico"}), "TextDark"),
+						AddThemeObject(SetProps(MakeElement("Label", "Selected", 13), {Size = UDim2.new(1,-40,1,0), Font = Enum.Font.FredokaOne, Name = "Selected", TextXAlignment = Enum.TextXAlignment.Right}), "TextDark"),
+						AddThemeObject(SetProps(MakeElement("Frame"), {Size = UDim2.new(1,0,0,1), Position = UDim2.new(0,0,1,-1), Name = "Line", Visible = false}), "Stroke"),
+						Click
+					}), {Size = UDim2.new(1,0,0,38), ClipsDescendants = true, Name = "F"}),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					MakeElement("Corner")
+				}), "Second")
+
+				AddConnection(DropdownList:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+					DropdownContainer.CanvasSize = UDim2.new(0,0,0,DropdownList.AbsoluteContentSize.Y)
+				end)
+
+				local function AddOptions(Options)
+					for _, Option in pairs(Options) do
+						local OptionBtn = AddThemeObject(SetChildren(SetProps(MakeElement("Button"), {
+							Parent = DropdownContainer,
+							Size = UDim2.new(1,0,0,28),
+							BackgroundTransparency = 0.2,
+							ClipsDescendants = true
+						}), {
+							MakeElement("Corner", 0, 6),
+							AddThemeObject(SetProps(MakeElement("Label", Option, 13, 0.4), {Position = UDim2.new(0,8,0,0), Size = UDim2.new(1,-8,1,0), Name = "Title"}), "Text")
+						}), "Second")
+						AddConnection(OptionBtn.MouseButton1Click, function()
+							local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+							Dropdown:Set(Option)
+						end)
+						Dropdown.Buttons[Option] = OptionBtn
+					end
+				end
+
+				function Dropdown:Refresh(Options, Delete)
+					if Delete then
+						for _,v in pairs(Dropdown.Buttons) do v:Destroy() end
+						table.clear(Dropdown.Options)
+						table.clear(Dropdown.Buttons)
+					end
+					Dropdown.Options = Options
+					AddOptions(Dropdown.Options)
+				end
+
+				function Dropdown:Set(Value)
+					if not table.find(Dropdown.Options, Value) then
+						Dropdown.Value = "..."
+						DropdownFrame.F.Selected.Text = Dropdown.Value
+						for _, v in pairs(Dropdown.Buttons) do
+							TweenService:Create(v,       TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0.2}):Play()
+							TweenService:Create(v.Title, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency       = 0.4}):Play()
+						end
+						return
+					end
+					Dropdown.Value = Value
+					DropdownFrame.F.Selected.Text = Dropdown.Value
+					for _, v in pairs(Dropdown.Buttons) do
+						TweenService:Create(v,       TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0.2}):Play()
+						TweenService:Create(v.Title, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency       = 0.4}):Play()
+					end
+					TweenService:Create(Dropdown.Buttons[Value],       TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+					TweenService:Create(Dropdown.Buttons[Value].Title, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency       = 0}):Play()
+					DropdownConfig.Callback(Dropdown.Value)
+					if Dropdown.Save and Library.ConfigFile then
+						Library.UserConfig[DropdownConfig.Flag or DropdownConfig.Name] = Value
+						Library:SaveConfig()
+					end
+					return DropdownConfig.Callback(Dropdown.Value)
+				end
+
+				AddConnection(Click.MouseButton1Click, function()
+					local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+					Dropdown.Toggled = not Dropdown.Toggled
+					DropdownFrame.F.Line.Visible = Dropdown.Toggled
+					TweenService:Create(DropdownFrame.F.Ico, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = Dropdown.Toggled and 180 or 0}):Play()
+					if #Dropdown.Options > MaxElements then
+						TweenService:Create(DropdownFrame, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = Dropdown.Toggled and UDim2.new(1,0,0,38+(MaxElements*28)) or UDim2.new(1,0,0,38)}):Play()
+					else
+						TweenService:Create(DropdownFrame, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = Dropdown.Toggled and UDim2.new(1,0,0,DropdownList.AbsoluteContentSize.Y+38) or UDim2.new(1,0,0,38)}):Play()
+					end
+				end)
+
+				Dropdown:Refresh(Dropdown.Options, false)
+
+				if Dropdown.Save and Library.ConfigFile and Library.UserConfig[DropdownConfig.Flag or DropdownConfig.Name] then
+					Dropdown:Set(Library.UserConfig[DropdownConfig.Flag or DropdownConfig.Name])
+				else
+					Dropdown:Set(Dropdown.Value)
+				end
+
+				if DropdownConfig.Flag then Library.Flags[DropdownConfig.Flag] = Dropdown end
+				return Dropdown
+			end
+
+			function ElementFunction:AddBind(BindConfig)
+				BindConfig.Name     = BindConfig.Name     or "Bind"
+				BindConfig.Default  = BindConfig.Default  or Enum.KeyCode.Unknown
+				BindConfig.Hold     = BindConfig.Hold     or false
+				BindConfig.Callback = BindConfig.Callback or function() end
+				BindConfig.Flag     = BindConfig.Flag     or nil
+				BindConfig.Save     = BindConfig.Save     or false
+
+				local Bind = {Value = nil, Binding = false, Type = "Bind", Save = BindConfig.Save}
+				local Holding = false
+				local Click = SetProps(MakeElement("Button"), {Size = UDim2.new(1,0,1,0)})
+
+				local BindBox = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 4), {
+					Size = UDim2.new(0,24,0,24),
+					Position = UDim2.new(1,-12,0.5,0),
+					AnchorPoint = Vector2.new(1,0.5),
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					AddThemeObject(SetProps(MakeElement("Label", BindConfig.Name, 14), {
+						Size = UDim2.new(1,0,1,0),
+						Font = Enum.Font.FredokaOne,
+						TextXAlignment = Enum.TextXAlignment.Center,
+						Name = "Value"
+					}), "Text")
+				}), "Main")
+
+				local BindFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,0,0,38),
+					Parent = ItemParent,
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", BindConfig.Name, 15), {
+						Size = UDim2.new(1,-12,1,0),
+						Position = UDim2.new(0,12,0,0),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					BindBox,
+					Click
+				}), "Second")
+
+				AddConnection(BindBox.Value:GetPropertyChangedSignal("Text"), function()
+					TweenService:Create(BindBox, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, BindBox.Value.TextBounds.X + 16, 0, 24)}):Play()
+				end)
+				AddConnection(Click.InputEnded, function(Input)
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+						if Bind.Binding then return end
+						Bind.Binding = true
+						BindBox.Value.Text = ""
+					end
+				end)
+				AddConnection(UserInputService.InputBegan, function(Input)
+					if UserInputService:GetFocusedTextBox() then return end
+					if (Input.KeyCode.Name == Bind.Value or Input.UserInputType.Name == Bind.Value) and not Bind.Binding then
+						if BindConfig.Hold then
+							Holding = true
+							BindConfig.Callback(Holding)
+						else
+							BindConfig.Callback()
+						end
+					elseif Bind.Binding then
+						local Key
+						pcall(function() if not CheckKey(BlacklistedKeys, Input.KeyCode) then Key = Input.KeyCode end end)
+						pcall(function() if CheckKey(WhitelistedMouse, Input.UserInputType) and not Key then Key = Input.UserInputType end end)
+						Key = Key or Bind.Value
+						Bind:Set(Key)
+					end
+				end)
+				AddConnection(UserInputService.InputEnded, function(Input)
+					if Input.KeyCode.Name == Bind.Value or Input.UserInputType.Name == Bind.Value then
+						if BindConfig.Hold and Holding then
+							Holding = false
+							BindConfig.Callback(Holding)
+						end
+					end
+				end)
+				AddConnection(Click.MouseEnter,       function() TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play() end)
+				AddConnection(Click.MouseLeave,       function() TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Library.Themes[Library.SelectedTheme].Second}):Play() end)
+				AddConnection(Click.MouseButton1Up,   function() TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play() end)
+				AddConnection(Click.MouseButton1Down, function() TweenService:Create(BindFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+6, Library.Themes[Library.SelectedTheme].Second.G*255+6, Library.Themes[Library.SelectedTheme].Second.B*255+6)}):Play() end)
+
+				function Bind:Set(Key)
+					Bind.Binding = false
+					Bind.Value = Key or Bind.Value
+					Bind.Value = Bind.Value.Name or Bind.Value
+					BindBox.Value.Text = Bind.Value
+					if Bind.Save and Library.ConfigFile then
+						Library.UserConfig[BindConfig.Flag or BindConfig.Name] = Bind.Value
+						Library:SaveConfig()
+					end
+				end
+
+				if Bind.Save and Library.ConfigFile and Library.UserConfig[BindConfig.Flag or BindConfig.Name] then
+					Bind:Set(Library.UserConfig[BindConfig.Flag or BindConfig.Name])
+				else
+					Bind:Set(BindConfig.Default)
+				end
+
+				if BindConfig.Flag then Library.Flags[BindConfig.Flag] = Bind end
+				return Bind
+			end
+
+			function ElementFunction:AddTextbox(TextboxConfig)
+				TextboxConfig = TextboxConfig or {}
+				TextboxConfig.Name          = TextboxConfig.Name          or "Textbox"
+				TextboxConfig.Default       = TextboxConfig.Default       or ""
+				TextboxConfig.TextDisappear = TextboxConfig.TextDisappear or false
+				TextboxConfig.Callback      = TextboxConfig.Callback      or function() end
+				TextboxConfig.Save          = TextboxConfig.Save          or false
+				TextboxConfig.Flag          = TextboxConfig.Flag          or nil
+
+				local Textbox = {Save = TextboxConfig.Save, Type = "Textbox", Value = TextboxConfig.Default}
+				local Click = SetProps(MakeElement("Button"), {Size = UDim2.new(1,0,1,0)})
+				local TextboxActual = AddThemeObject(Create("TextBox", {
+					Size = UDim2.new(1,0,1,0),
+					BackgroundTransparency = 1,
+					TextColor3 = Color3.fromRGB(255,255,255),
+					PlaceholderColor3 = Color3.fromRGB(210,210,210),
+					PlaceholderText = "Input",
+					Font = Enum.Font.GothamSemibold,
+					TextXAlignment = Enum.TextXAlignment.Center,
+					TextSize = 14,
+					ClearTextOnFocus = false
+				}), "Text")
+
+				local TextContainer = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 4), {
+					Size = UDim2.new(0,24,0,24),
+					Position = UDim2.new(1,-12,0.5,0),
+					AnchorPoint = Vector2.new(1,0.5),
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					TextboxActual
+				}), "Main")
+
+				local TextboxFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,0,0,38),
+					Parent = ItemParent,
+					BackgroundTransparency = 0.2
+				}), {
+					AddThemeObject(SetProps(MakeElement("Label", TextboxConfig.Name, 15), {
+						Size = UDim2.new(1,-12,1,0),
+						Position = UDim2.new(0,12,0,0),
+						Font = Enum.Font.FredokaOne,
+						Name = "Content"
+					}), "Text"),
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+					TextContainer,
+					Click
+				}), "Second")
+
+				function Textbox:Set(Value)
+					Textbox.Value = Value
+					TextboxActual.Text = Value
+					if Textbox.Save and Library.ConfigFile then
+						Library.UserConfig[TextboxConfig.Flag or TextboxConfig.Name] = Value
+						Library:SaveConfig()
+					end
+				end
+
+				AddConnection(TextboxActual:GetPropertyChangedSignal("Text"), function()
+					TweenService:Create(TextContainer, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Size = UDim2.new(0, TextboxActual.TextBounds.X+16, 0, 24)}):Play()
+				end)
+				AddConnection(TextboxActual.FocusLost, function()
+					TextboxConfig.Callback(TextboxActual.Text)
+					Textbox.Value = TextboxActual.Text
+					if Textbox.Save and Library.ConfigFile then
+						Library.UserConfig[TextboxConfig.Flag or TextboxConfig.Name] = TextboxActual.Text
+						Library:SaveConfig()
+					end
+					if TextboxConfig.TextDisappear then TextboxActual.Text = "" end
+				end)
+
+				if Textbox.Save and Library.ConfigFile and Library.UserConfig[TextboxConfig.Flag or TextboxConfig.Name] then
+					Textbox:Set(Library.UserConfig[TextboxConfig.Flag or TextboxConfig.Name])
+				else
+					TextboxActual.Text = TextboxConfig.Default
+				end
+
+				AddConnection(Click.MouseEnter,       function() TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play() end)
+				AddConnection(Click.MouseLeave,       function() TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Library.Themes[Library.SelectedTheme].Second}):Play() end)
+				AddConnection(Click.MouseButton1Up,   function()
+					TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+3, Library.Themes[Library.SelectedTheme].Second.G*255+3, Library.Themes[Library.SelectedTheme].Second.B*255+3)}):Play()
+					TextboxActual:CaptureFocus()
+				end)
+				AddConnection(Click.MouseButton1Down, function() TweenService:Create(TextboxFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(Library.Themes[Library.SelectedTheme].Second.R*255+6, Library.Themes[Library.SelectedTheme].Second.G*255+6, Library.Themes[Library.SelectedTheme].Second.B*255+6)}):Play() end)
+
+				if TextboxConfig.Flag then Library.Flags[TextboxConfig.Flag] = Textbox end
+				return Textbox
+			end
+
+			function ElementFunction:AddColorpicker(ColorpickerConfig)
+				ColorpickerConfig = ColorpickerConfig or {}
+				ColorpickerConfig.Name     = ColorpickerConfig.Name     or "Colorpicker"
+				ColorpickerConfig.Default  = ColorpickerConfig.Default  or Color3.fromRGB(255,255,255)
+				ColorpickerConfig.Callback = ColorpickerConfig.Callback or function() end
+				ColorpickerConfig.Flag     = ColorpickerConfig.Flag     or nil
+				ColorpickerConfig.Save     = ColorpickerConfig.Save     or false
+
+				local ColorH, ColorS, ColorV = 1, 1, 1
+				local Colorpicker = {Value = ColorpickerConfig.Default, Toggled = false, Type = "Colorpicker", Save = ColorpickerConfig.Save}
+
+				local ColorSelection = Create("ImageLabel", {
+					Size = UDim2.new(0,18,0,18),
+					Position = UDim2.new(select(3, Color3.toHSV(Colorpicker.Value))),
+					ScaleType = Enum.ScaleType.Fit,
+					AnchorPoint = Vector2.new(0.5,0.5),
+					BackgroundTransparency = 1,
+					Image = "http://www.roblox.com/asset/?id=4805639000"
+				})
+				local HueSelection = Create("ImageLabel", {
+					Size = UDim2.new(0,18,0,18),
+					Position = UDim2.new(0.5,0,1-select(1, Color3.toHSV(Colorpicker.Value))),
+					ScaleType = Enum.ScaleType.Fit,
+					AnchorPoint = Vector2.new(0.5,0.5),
+					BackgroundTransparency = 1,
+					Image = "http://www.roblox.com/asset/?id=4805639000"
+				})
+				local Color = Create("ImageLabel", {Size = UDim2.new(1,-25,1,0), Visible = false, Image = "rbxassetid://4155801252"}, {
+					Create("UICorner", {CornerRadius = UDim.new(0,5)}),
+					ColorSelection
+				})
+				local Hue = Create("Frame", {Size = UDim2.new(0,20,1,0), Position = UDim2.new(1,-20,0,0), Visible = false, BackgroundTransparency = 0.2}, {
+					Create("UIGradient", {Rotation = 270, Color = ColorSequence.new{
+						ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255,0,4)),
+						ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234,255,0)),
+						ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21,255,0)),
+						ColorSequenceKeypoint.new(0.60, Color3.fromRGB(0,255,255)),
+						ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0,17,255)),
+						ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255,0,251)),
+						ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255,0,4))
+					}}),
+					Create("UICorner", {CornerRadius = UDim.new(0,5)}),
+					HueSelection
+				})
+				local ColorpickerContainer = Create("Frame", {
+					Position = UDim2.new(0,0,0,32),
+					Size = UDim2.new(1,0,1,-32),
+					BackgroundTransparency = 1,
+					ClipsDescendants = true
+				}, {
+					Hue, Color,
+					Create("UIPadding", {PaddingLeft=UDim.new(0,35), PaddingRight=UDim.new(0,35), PaddingBottom=UDim.new(0,10), PaddingTop=UDim.new(0,17)})
+				})
+
+				local Click = SetProps(MakeElement("Button"), {Size = UDim2.new(1,0,1,0)})
+				local ColorpickerBox = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 4), {
+					Size = UDim2.new(0,24,0,24),
+					Position = UDim2.new(1,-12,0.5,0),
+					AnchorPoint = Vector2.new(1,0.5),
+					BackgroundTransparency = 0.2
+				}), {AddThemeObject(MakeElement("Stroke"), "Stroke")}), "Main")
+
+				local ColorpickerFrame = AddThemeObject(SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(255,255,255), 0, 5), {
+					Size = UDim2.new(1,0,0,38),
+					Parent = ItemParent,
+					BackgroundTransparency = 0.2
+				}), {
+					SetProps(SetChildren(MakeElement("TFrame"), {
+						AddThemeObject(SetProps(MakeElement("Label", ColorpickerConfig.Name, 15), {Size=UDim2.new(1,-12,1,0), Position=UDim2.new(0,12,0,0), Font=Enum.Font.FredokaOne, Name="Content"}), "Text"),
+						ColorpickerBox,
+						Click,
+						AddThemeObject(SetProps(MakeElement("Frame"), {Size=UDim2.new(1,0,0,1), Position=UDim2.new(0,0,1,-1), Name="Line", Visible=false}), "Stroke"),
+					}), {Size=UDim2.new(1,0,0,38), ClipsDescendants=true, Name="F"}),
+					ColorpickerContainer,
+					AddThemeObject(MakeElement("Stroke"), "Stroke"),
+				}), "Second")
+
+				AddConnection(Click.MouseButton1Click, function()
+					local sound = Instance.new("Sound") sound.SoundId = "rbxassetid://6895079853" sound.Volume = 0.5 sound.Parent = game:GetService("SoundService") sound:Play() game:GetService("Debris"):AddItem(sound, 1)
+					Colorpicker.Toggled = not Colorpicker.Toggled
+					TweenService:Create(ColorpickerFrame, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = Colorpicker.Toggled and UDim2.new(1,0,0,148) or UDim2.new(1,0,0,38)}):Play()
+					Color.Visible = Colorpicker.Toggled
+					Hue.Visible   = Colorpicker.Toggled
+					ColorpickerFrame.F.Line.Visible = Colorpicker.Toggled
+				end)
+
+				local function UpdateColorPicker()
+					ColorpickerBox.BackgroundColor3 = Color3.fromHSV(ColorH, ColorS, ColorV)
+					Color.BackgroundColor3 = Color3.fromHSV(ColorH, 1, 1)
+					Colorpicker:Set(ColorpickerBox.BackgroundColor3)
+					ColorpickerConfig.Callback(ColorpickerBox.BackgroundColor3)
+				end
+
+				ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
+				ColorS = (math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
+				ColorV = 1 - (math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
+
+				AddConnection(Color.InputBegan, function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if ColorInput then ColorInput:Disconnect() end
+						ColorInput = AddConnection(RunService.RenderStepped, function()
+							local ColorX = math.clamp(Mouse.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X
+							local ColorY = math.clamp(Mouse.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y
+							ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
+							ColorS = ColorX; ColorV = 1 - ColorY
+							UpdateColorPicker()
+						end)
+					end
+				end)
+				AddConnection(Color.InputEnded, function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if ColorInput then ColorInput:Disconnect() end
+					end
+				end)
+				AddConnection(Hue.InputBegan, function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if HueInput then HueInput:Disconnect() end
+						HueInput = AddConnection(RunService.RenderStepped, function()
+							local HueY = math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y
+							HueSelection.Position = UDim2.new(0.5, 0, HueY, 0)
+							ColorH = 1 - HueY
+							UpdateColorPicker()
+						end)
+					end
+				end)
+				AddConnection(Hue.InputEnded, function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+						if HueInput then HueInput:Disconnect() end
+					end
+				end)
+
+				function Colorpicker:Set(Value)
+					Colorpicker.Value = Value
+					ColorpickerBox.BackgroundColor3 = Colorpicker.Value
+					ColorpickerConfig.Callback(Colorpicker.Value)
+					if Colorpicker.Save and Library.ConfigFile then
+						local packed = PackColor(Value)
+						Library.UserConfig[ColorpickerConfig.Flag or ColorpickerConfig.Name] = packed
+						Library:SaveConfig()
+					end
+				end
+
+				if Colorpicker.Save and Library.ConfigFile and Library.UserConfig[ColorpickerConfig.Flag or ColorpickerConfig.Name] then
+					local saved = Library.UserConfig[ColorpickerConfig.Flag or ColorpickerConfig.Name]
+					if saved and saved.R and saved.G and saved.B then
+						Colorpicker:Set(UnpackColor(saved))
+					else
+						Colorpicker:Set(Colorpicker.Value)
+					end
+				else
+					Colorpicker:Set(Colorpicker.Value)
+				end
+
+				if ColorpickerConfig.Flag then Library.Flags[ColorpickerConfig.Flag] = Colorpicker end
+				return Colorpicker
+			end
+
+			return ElementFunction
+		end
+
+		local ElementFunction = {}
+
+		function ElementFunction:AddSection(SectionConfig)
+			SectionConfig.Name = SectionConfig.Name or "Section"
+			local SectionFrame = SetChildren(SetProps(MakeElement("TFrame"), {
+				Size = UDim2.new(1,0,0,26),
+				Parent = TabItemContainer
+			}), {
+				(function()
+					local line = Create("Frame", {
+						Size = UDim2.new(0,2,0,14), Position = UDim2.new(0,0,0,5),
+						BackgroundColor3 = Color3.fromRGB(150, 150, 165), BorderSizePixel = 0, Parent = SectionFrame,
+					})
+					Create("UICorner", {CornerRadius = UDim.new(0,2), Parent = line})
+					return line
+				end)(),
+				AddThemeObject(SetProps(MakeElement("Label", SectionConfig.Name, 14), {
+					Size = UDim2.new(1,-12,0,16),
+					Position = UDim2.new(0,10,0,3),
+					Font = Enum.Font.FredokaOne
+				}), "TextDark"),
+				SetChildren(SetProps(MakeElement("TFrame"), {
+					AnchorPoint = Vector2.new(0,0),
+					Size = UDim2.new(1,0,1,-24),
+					Position = UDim2.new(0,0,0,23),
+					Name = "Holder"
+				}), {MakeElement("List", 0, 6)}),
+			})
+			AddConnection(SectionFrame.Holder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
+				SectionFrame.Size        = UDim2.new(1, 0, 0, SectionFrame.Holder.UIListLayout.AbsoluteContentSize.Y + 31)
+				SectionFrame.Holder.Size = UDim2.new(1, 0, 0, SectionFrame.Holder.UIListLayout.AbsoluteContentSize.Y)
+			end)
+			local SectionFunction = {}
+			for i, v in next, GetElements(SectionFrame.Holder) do SectionFunction[i] = v end
+			return SectionFunction
+		end
+
+		for i, v in next, GetElements(TabItemContainer) do ElementFunction[i] = v end
+
+		if TabConfig.PremiumOnly then
+			for i, v in next, ElementFunction do ElementFunction[i] = function() end end
+			TabItemContainer:FindFirstChild("UIListLayout"):Destroy()
+			TabItemContainer:FindFirstChild("UIPadding"):Destroy()
+			SetChildren(SetProps(MakeElement("TFrame"), {Size = UDim2.new(1,0,1,0), Parent = TabItemContainer}), {
+				AddThemeObject(SetProps(MakeElement("Image", "rbxassetid://3610239960"), {Size=UDim2.new(0,18,0,18), Position=UDim2.new(0,15,0,15), ImageTransparency=0.4}), "Text"),
+				AddThemeObject(SetProps(MakeElement("Label", "Unauthorised Access", 14), {Size=UDim2.new(1,-38,0,14), Position=UDim2.new(0,38,0,18), TextTransparency=0.4}), "Text"),
+			})
+		end
+		return ElementFunction, TabFrame
+	end
+
+	local TabFunction    = {}
+	local tabLayoutOrder = 0
+	local tabGroupRegistry = {}
+	local allGroups = {}
+
+	local currentTabSection = nil
+
+	local function NextOrder()
+		tabLayoutOrder = tabLayoutOrder + 1
+		return tabLayoutOrder
+	end
+
+	local Drag = {active = false, src = nil, ghost = nil}
+
+	local function GetOrderedTabs()
+		local t = {}
+		for _, c in ipairs(TabHolder:GetChildren()) do
+			if c:IsA("TextButton") and c:FindFirstChild("Ico") and c:FindFirstChild("Title") then
+				table.insert(t, c)
+			end
+		end
+		table.sort(t, function(a,b) return a.LayoutOrder < b.LayoutOrder end)
+		return t
+	end
+
+	local function TabUnderMouse(exclude)
+		for _, c in ipairs(TabHolder:GetChildren()) do
+			if c:IsA("TextButton") and c:FindFirstChild("Ico") and c:FindFirstChild("Title") and c ~= exclude then
+				local p, s = c.AbsolutePosition, c.AbsoluteSize
+				if Mouse.X >= p.X and Mouse.X <= p.X+s.X and Mouse.Y >= p.Y and Mouse.Y <= p.Y+s.Y then return c end
+			end
+		end
+	end
+
+	local function GroupHeaderUnderMouse()
+		for _, g in ipairs(allGroups) do
+			local h = g.header
+			if h then
+				local p, s = h.AbsolutePosition, h.AbsoluteSize
+				if Mouse.X >= p.X and Mouse.X <= p.X+s.X and Mouse.Y >= p.Y and Mouse.Y <= p.Y+s.Y then return g end
+			end
+		end
+	end
+
+	local function RemoveFromGroup(tabBtn)
+		local reg = tabGroupRegistry[tabBtn]
+		if not reg then return end
+		for i, v in ipairs(reg.frames) do
+			if v == tabBtn then table.remove(reg.frames, i) break end
+		end
+		tabGroupRegistry[tabBtn] = nil
+	end
+
+	local function AddToGroup(tabBtn, groupData)
+		RemoveFromGroup(tabBtn)
+		table.insert(groupData.frames, tabBtn)
+		tabGroupRegistry[tabBtn] = groupData
+		tabBtn.Visible = not groupData.collapsed
+		local pad = tabBtn:FindFirstChildOfClass("UIPadding")
+		if not pad then pad = Instance.new("UIPadding"); pad.Parent = tabBtn end
+		pad.PaddingLeft = UDim.new(0, 0)
+	end
+
+	local function RemoveIndent(tabBtn)
+		local pad = tabBtn:FindFirstChildOfClass("UIPadding")
+		if pad then pad.PaddingLeft = UDim.new(0, 0) end
+	end
+
+	local function EndDrag()
+		Drag.active = false
+		if Drag.ghost then Drag.ghost:Destroy(); Drag.ghost = nil end
+		if Drag.src then
+			TweenService:Create(Drag.src, TweenInfo.new(0.15), {BackgroundTransparency = 1}):Play()
+			Drag.src = nil
+		end
+		for _, c in ipairs(TabHolder:GetChildren()) do
+			if c:IsA("TextButton") then
+				TweenService:Create(c, TweenInfo.new(0.1), {BackgroundTransparency = 1}):Play()
+			end
+		end
+	end
+
+	local function StartDrag(tabFrame)
+		Drag.active = true
+		Drag.src    = tabFrame
+		tabFrame.BackgroundColor3       = Color3.fromRGB(135, 206, 250)
+		tabFrame.BackgroundTransparency = 0.6
+
+		local ghost = Instance.new("Frame")
+		ghost.Size                   = UDim2.new(0, tabFrame.AbsoluteSize.X-8, 0, tabFrame.AbsoluteSize.Y-4)
+		ghost.BackgroundColor3       = Color3.fromRGB(135, 206, 250)
+		ghost.BackgroundTransparency = 0.4
+		ghost.BorderSizePixel        = 0
+		ghost.ZIndex                 = 20
+		Instance.new("UICorner",ghost).CornerRadius = UDim.new(0,5)
+		local gl = Instance.new("TextLabel", ghost)
+		gl.Size=UDim2.new(1,-8,1,0); gl.Position=UDim2.new(0,8,0,0)
+		gl.BackgroundTransparency=1; gl.Text=tabFrame.Title.Text
+		gl.TextColor3=Color3.fromRGB(255,255,255); gl.Font=Enum.Font.GothamBlack
+		gl.TextSize=13; gl.TextXAlignment=Enum.TextXAlignment.Left; gl.ZIndex=21
+		ghost.Parent = Container
+		Drag.ghost = ghost
+
+		local dragConn
+		dragConn = RunService.RenderStepped:Connect(function()
+			if not Drag.active then
+				dragConn:Disconnect()
+				return
+			end
+			local rx = Mouse.X - TabHolder.AbsolutePosition.X
+			local ry = Mouse.Y - TabHolder.AbsolutePosition.Y - 15
+			if Drag.ghost then Drag.ghost.Position = UDim2.new(0,rx,0,ry) end
+			local hovered = TabUnderMouse(tabFrame)
+			local hgroup  = GroupHeaderUnderMouse()
+			for _, c in ipairs(TabHolder:GetChildren()) do
+				if c:IsA("TextButton") and c ~= tabFrame then
+					local isTarget = (c == hovered) or (hgroup and c == hgroup.header)
+					c.BackgroundTransparency = isTarget and 0.6 or 1
+					if isTarget then c.BackgroundColor3 = Color3.fromRGB(135, 206, 250) end
+				end
+			end
+		end)
+	end
+
+	local function AttachDrag(tabFrame)
+		local timer, dragging = nil, false
+		tabFrame.InputBegan:Connect(function(inp)
+			if inp.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+			dragging = false
+			timer = task.delay(0.25, function()
+				if UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
+					dragging = true; StartDrag(tabFrame)
+				end
+			end)
+		end)
+		tabFrame.InputEnded:Connect(function(inp)
+			if inp.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+			if timer then task.cancel(timer); timer = nil end
+			if not dragging then return end
+			dragging = false
+			if not (Drag.active and Drag.src == tabFrame) then return end
+
+			local targetTab   = TabUnderMouse(tabFrame)
+			local targetGroup = GroupHeaderUnderMouse()
+
+			if targetGroup then
+				RemoveFromGroup(tabFrame)
+				local lastOrder = targetGroup.header.LayoutOrder
+				for _, f in ipairs(targetGroup.frames) do
+					if f.LayoutOrder > lastOrder then lastOrder = f.LayoutOrder end
+				end
+				tabLayoutOrder = tabLayoutOrder + 1
+				tabFrame.LayoutOrder = lastOrder + 0.5
+				local sorted = GetOrderedTabs()
+				for i, btn in ipairs(sorted) do btn.LayoutOrder = i * 10 end
+				tabLayoutOrder = #sorted * 10
+				AddToGroup(tabFrame, targetGroup)
+			elseif targetTab then
+				local srcOrder = tabFrame.LayoutOrder
+				tabFrame.LayoutOrder = targetTab.LayoutOrder
+				targetTab.LayoutOrder = srcOrder
+				local tg = tabGroupRegistry[targetTab]
+				if tg then
+					AddToGroup(tabFrame, tg)
+				elseif tabGroupRegistry[tabFrame] then
+					RemoveFromGroup(tabFrame)
+					RemoveIndent(tabFrame)
+					tabFrame.Visible = true
+				end
+			end
+			EndDrag()
+		end)
+	end
+
+	function TabFunction:TabSection(Name)
+		Name = Name or "Section"
+
+		local headerBtn = Create("Frame", {  -- Changed from TextButton to Frame (not clickable)
+			Size             = UDim2.new(1, 0, 0, 24),
+			BackgroundTransparency = 1,
+			BorderSizePixel  = 0,
+			LayoutOrder      = NextOrder(),
+			Parent           = TabHolder,
+		})
+
+		local accentLine = Create("Frame", {
+			Size             = UDim2.new(0, 2, 0, 12),
+			Position         = UDim2.new(0, 6, 0.5, -6),
+			BackgroundColor3 = Color3.fromRGB(150, 150, 165),
+			BorderSizePixel  = 0,
+			Parent           = headerBtn,
+		})
+		Create("UICorner", {CornerRadius = UDim.new(0, 2), Parent = accentLine})
+
+		local sectionLabel = Create("TextLabel", {
+			Size               = UDim2.new(1, -18, 1, 0),
+			Position           = UDim2.new(0, 14, 0, 0),
+			BackgroundTransparency = 1,
+			Text               = string.upper(Name),
+			TextColor3         = Color3.fromRGB(150, 150, 165),
+			TextSize           = 10,
+			Font               = Enum.Font.GothamBold,
+			TextXAlignment     = Enum.TextXAlignment.Left,
+			Parent             = headerBtn,
+		})
+
+		-- No collapse logic; tabs always visible
+		local tabFrames = {}
+
+		local groupData = {
+			header    = headerBtn,
+			frames    = tabFrames,
+			collapsed = false,  -- always false, never collapses
+		}
+		table.insert(allGroups, groupData)
+
+		currentTabSection = groupData
+	end
+
+	function TabFunction:MakeTab(TabConfig)
+		local ef, frame = BuildTab(TabConfig, TabHolder)
+		if frame then
+			frame.LayoutOrder = NextOrder()
+			AttachDrag(frame)
+
+			if currentTabSection then
+				table.insert(currentTabSection.frames, frame)
+				tabGroupRegistry[frame] = currentTabSection
+				frame.Visible = true  -- always visible, no collapse
+			end
+		end
+		return ef
+	end
+
+	function TabFunction:MakeTabGroup(GroupConfig)
+		GroupConfig = GroupConfig or {}
+		GroupConfig.Name      = GroupConfig.Name      or "Group"
+		GroupConfig.Collapsed = GroupConfig.Collapsed or false
+
+		local collapsed     = GroupConfig.Collapsed
+		local groupFrames   = {}
+		local headerCreated = false
+		local AccentLine, GroupLabel
+		local headerBtn
+
+		local groupData = {frames = groupFrames, header = nil, collapsed = collapsed}
+		table.insert(allGroups, groupData)
+
+		local function SetCollapsed(state)
+			collapsed = state
+			groupData.collapsed = state
+			for _, tf in ipairs(groupFrames) do tf.Visible = not collapsed end
+			if AccentLine then
+				TweenService:Create(AccentLine, TweenInfo.new(0.2), {BackgroundColor3 = collapsed and Color3.fromRGB(80,80,85) or Color3.fromRGB(135, 206, 250)}):Play()
+			end
+			if GroupLabel then
+				TweenService:Create(GroupLabel, TweenInfo.new(0.2), {TextColor3 = collapsed and Color3.fromRGB(100,100,105) or Color3.fromRGB(135, 206, 250)}):Play()
+			end
+		end
+
+		local function EnsureHeader()
+			if headerCreated then return end
+			headerCreated = true
+			headerBtn = Create("TextButton", {
+				Size=UDim2.new(1,0,0,22), BackgroundTransparency=1,
+				BorderSizePixel=0, Text="", AutoButtonColor=false,
+				LayoutOrder=NextOrder(), Parent=TabHolder,
+			})
+			groupData.header = headerBtn
+			AccentLine = Create("Frame", {
+				Size=UDim2.new(0,2,0,10), Position=UDim2.new(0,6,0.5,-5),
+				BackgroundColor3 = collapsed and Color3.fromRGB(80,80,85) or Color3.fromRGB(135, 206, 250),
+				BorderSizePixel=0, Parent=headerBtn,
+			})
+			Create("UICorner",{CornerRadius=UDim.new(0,2),Parent=AccentLine})
+			GroupLabel = Create("TextLabel", {
+				Size=UDim2.new(1,-16,1,0), Position=UDim2.new(0,14,0,0),
+				BackgroundTransparency=1, Text=string.upper(GroupConfig.Name),
+				TextColor3 = collapsed and Color3.fromRGB(100,100,105) or Color3.fromRGB(135, 206, 250),
+				TextSize=10, Font=Enum.Font.GothamBold,
+				TextXAlignment=Enum.TextXAlignment.Left, Parent=headerBtn,
+			})
+			headerBtn.MouseButton1Click:Connect(function() SetCollapsed(not collapsed) end)
+			headerBtn.MouseEnter:Connect(function() TweenService:Create(GroupLabel,TweenInfo.new(0.15),{TextColor3=Color3.fromRGB(200,230,255)}):Play() end)
+			headerBtn.MouseLeave:Connect(function() TweenService:Create(GroupLabel,TweenInfo.new(0.15),{TextColor3=collapsed and Color3.fromRGB(100,100,105) or Color3.fromRGB(135, 206, 250)}):Play() end)
+		end
+
+		local GroupFunction = {}
+		function GroupFunction:MakeTab(TabConfig)
+			EnsureHeader()
+			local tabEF, tabBtn = BuildTab(TabConfig, TabHolder)
+			if tabBtn then
+				tabBtn.LayoutOrder = NextOrder()
+				local pad = tabBtn:FindFirstChildOfClass("UIPadding")
+				if not pad then pad = Instance.new("UIPadding"); pad.Parent = tabBtn end
+				pad.PaddingLeft = UDim.new(0, 0)
+				table.insert(groupFrames, tabBtn)
+				tabGroupRegistry[tabBtn] = groupData
+				tabBtn.Visible = not collapsed
+				AttachDrag(tabBtn)
+			end
+			return tabEF
+		end
+		return GroupFunction
+	end
+
+	return TabFunction
+end
+
+return Library
